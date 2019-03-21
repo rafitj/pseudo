@@ -1,0 +1,79 @@
+body {
+  background: #ffffff;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+ul {
+  margin: 0;
+}
+
+
+
+.container{
+  margin: 0 auto;
+  padding: 0;
+  center: align;
+}
+
+.bg-steel {
+  padding-top: 0.5rem;
+  background-color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link {
+  font-family: 'Helvetica';
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.5s;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  transform: scale(1.2);
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.nav-icons {
+  width: 3rem;
+  padding: 0 0.5rem;
+}
+
+.nav-logo {
+  width: 4.1rem;
+}
+
+.col-md-12{
+  padding: 0;
+}
+
+.center-content{
+  text-align: center;
+}
+
+.nav-anchor {
+  font-family: 'Helvetica';
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-anchor:hover {
+  font-family: 'Helvetica';
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+.fas {
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

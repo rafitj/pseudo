@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="content-section">
+  <div class="profile-header">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        {{ u_form }}
+        <br>
+        {{ p_form }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-dark" type="submit" name="button">Update</button>
+      </div>
+    </form>
+  </div>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,70 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+<div class="center-content">
+
+<div class="my_container">
+  <ul>
+
+   {% for post in posts %}
+     <li class="block">
+       <a href="{% url 'post-detail' post.id %}"><img class= "post-img" src="{{ post.project_image.url }}" />
+         <span class="main-span">
+           <table class="main-table">
+             <tr>
+               <td><a class="post-anchor" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></td>
+               <td class="td-divide"> &nbsp | &nbsp </td>
+               <td>
+                 <table>
+                   <tr>
+                     <td class="td-author"><a class="post-anchor" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></td>
+                   </tr>
+                   <tr>
+                     <td class="td-summary">{{ post.summary }}</td>
+                   </tr>
+                 </table>
+               </td>
+             </tr>
+           </table>
+       </span>
+       </a>
+     </li>
+   {% endfor %}
+
+ </ul>
+</div>
+</div>
+
+
+<!-- <div class="container">
+  <div class="row">
+   {% for post in posts %}
+
+       <img class="col-md-4 content-section" src="{{ post.author.profile.image.url }}" alt="">
+
+       <div class="media-body">
+         <div class="article-metadata">
+           <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+         </div>
+         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+         <p class="article-content">{{ post.content }}</p>
+       </div>
+
+   {% endfor %}
+   </div>
+ </div> -->
+
+   {% if is_paginated %}
+     {% if page_obj.has_previous %}
+       <a class="btn btn-warning-info mb-4"href="?page=1">First</a>
+       <a class="btn btn-warning-info mb-4"href="?page={{ page_obj.previous_page_number }}">Next</a>
+     {% endif %}
+
+     {% if page_obj.has_next %}
+       <a class="btn btn-warning-info mb-4"href="?page={{ page_obj.next_page_number}}">Next</a>
+       <a class="btn btn-warning-info mb-4"href="?page={{ page_obj.paginator_num_pages }}">Last</a>
+     {% endif %}
+   {% endif %}
+
+{% endblock content %}

@@ -1,23 +1,30 @@
-{% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-  <div class="content-section">
-    <form method="POST">
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Login</legend>
-        {{ form|crispy }}
-      </fieldset>
-      <div class="form-group">
-        <button class="btn btn-outline-info" type="submit" name="button">Login</button>
-        <small>
-          <a href="{% url 'password_reset' %}">Forgot your password?</a>
-        </small>
-      </div>
-    </form>
-    <div class="border-top pt-3">
-      <small class = "text-muted">Don't have an account?</small>
-      <a class="ml-2" href="{% url 'password_reset'%}">Sign up here!</a>
-    </div>
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="modal-header">
+    <h5 class="modal-title"> Login </h5>
   </div>
-{% endblock content %}
+  <div class="modal-body">
+    {{ form|crispy }}
+    <button class="btn btn-outline-info" type="submit" name="button">Login</button>
+  <small>
+    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+  </small>
+  <!-- <br>
+  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'github' %}"> GitHub</a></button>
+  <br>
+  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'twitter' %}"> Twitter</a></button>
+  <br>
+  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'facebook' %}"> Facebook</a></button>
+  <br>
+  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'google-oauth2' %}"> Google </a></button> -->
+
+  </div>
+
+  <div class="modal-footer">
+    <div class="border-top pt-3">
+    <small class = "text-muted">Don't have an account?</small>
+    <a class="ml-2" href="{% url 'password_reset'%}">Sign up here!</a>
+  </div>
+</form>

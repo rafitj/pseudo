@@ -15,7 +15,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
-class UserUpdateForm(forms.ModelForm):
+class UserEmailUpdateForm(forms.ModelForm):
     email = forms.EmailField(label='', widget=forms.EmailInput(
         attrs={
             'class': 'my-form-control col-md-12',
@@ -24,17 +24,60 @@ class UserUpdateForm(forms.ModelForm):
             'autocomplete': 'off'
         }
     ))
+
+    class Meta:
+        model = User
+        fields = ['email']
+
+
+class UsernameUpdateForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user')
+        super(UsernameUpdateForm, self).__init__(*args, **kwargs)
+
+    # curr_user = self.user.username
+
     username = forms.CharField(label='', widget=forms.TextInput(
         attrs={
-            'class': 'my-form-control account-heading col-md-12 ',
+            'class': 'my-form-control profile-name-edit',
             'placeholder': 'Username',
             'maxlength': '20',
+            'autocomplete': 'off',
+        }))
+
+    class Meta:
+        model = User
+        fields = ['username']
+
+
+class UserDescUpdateForm(forms.ModelForm):
+    description = forms.CharField(label='', widget=forms.Textarea(
+        attrs={
+            'class': 'my-form-control profile-description-edit textarea',
+            'placeholder': 'Profile Summary',
+            'maxlength': '200',
+            'cols': '40',
+            'rows': '5',
             'autocomplete': 'off'
         }))
 
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['description']
+
+
+class UserBioUpdateForm(forms.ModelForm):
+    bio = forms.CharField(label='', widget=forms.TextInput(
+        attrs={
+            'class': 'my-form-control profile-bio',
+            'placeholder': 'Profile Bio',
+            'maxlength': '40',
+            'autocomplete': 'off'
+        }))
+
+    class Meta:
+        model = User
+        fields = ['bio']
 
 
 class ProfileUpdateForm(forms.ModelForm):

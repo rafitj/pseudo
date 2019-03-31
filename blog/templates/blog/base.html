@@ -28,52 +28,103 @@
   </head>
   <body>
     <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" >
         <div class="container">
 
           <a class="nav-item nav-link" href="{% url 'blog-home' %}">
             <img class = "nav-logo" src="{% static 'blog/nav_icons/logo_icon.svg' %}" alt=""  >
           </a>
 
-
           <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-fire"></i> Discover </a>
-          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-user-friends"></i> Follow </a>
-          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-globe-americas"></i> Contribute </a>
-          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-search"></i> Search </a>
-
+          <a class="nav-item nav-anchor nav-link" href="{% url 'follow_users' %}"> <i class="fas fa-user-friends"></i> Follow </a>
+          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-question-circle"></i> About </a>
+          <!-- <i class="fas fa-search"></i>  -->
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            <span class=" ">
+              <i class="fas fa-bars"></i>
+            </span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarToggle">
+
+
             <div class="navbar-nav mr-auto">
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
             {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'index' %}">
+              <i class="fas fa-door-open"></i> Enter <span class="space"> &nbsp; </span>
+              <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/enter_room.svg' %}" alt=""> -->
+            </a>
             <a class="nav-item nav-link" href="{% url 'post-create' %}">
-              <img class = "nav-icons" src="{% static 'blog/nav_icons/add_project_icon.svg' %}" alt="">
+                <i class="fas fa-plus-circle"></i> Create  <span class="space"> &nbsp; </span>
+              <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/add_project_icon.svg' %}" alt=""> -->
             </a>
             <a class="nav-item nav-link" href="{% url 'user-posts' user.username %}">
-              <img class = "nav-icons" src="{% static 'blog/nav_icons/my_projects_icon.svg' %}" alt="">
+                <i class="fas fa-folder"></i> Rooms <span class="space"> &nbsp; </span>
+              <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/my_projects_icon.svg' %}" alt=""> -->
             </a>
-            <a class="nav-item nav-link" href="{% url 'profile' %}">
-              <img class = "nav-icons" src="{% static 'blog/nav_icons/profile_icon.svg' %}" alt="">
+            <a class="nav-item nav-link" href="{% url 'profile_view' %}">
+              <i class="fas fa-user"></i> Profile <span class="space"> &nbsp; </span>
+              <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/profile_icon.svg' %}" alt=""> -->
             </a>
-            <a class="nav-item nav-link" href="{% url 'logout' %}">
-              <img class = "nav-icons" src="{% static 'blog/nav_icons/logout_icon.svg' %}" alt="">
+            <a class="navlistlast nav-item nav-link" data-toggle="modal" data-target="#modalLogout" href="#">
+              <i class="fas fa-sign-out-alt"></i> Logout <span class="space"> &nbsp; </span>
+              <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/logout_icon.svg' %}" alt=""> -->
             </a>
             {% else %}
-            <a class="nav-item nav-link" href="{% url 'login' %}"> <i class="fas fa-sign-in-alt"></i> Login</a>
-            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            <a class="nav-item nav-link show-login" href="{% url 'login' %}" data-toggle="modal" data-target="#modalLogin"> <i class="fas fa-sign-in-alt"></i> Login</a>
+            <a class="navlistlast nav-item nav-link" href="{% url 'register' %}"><i class="fas fa-sign-in-alt"></i> Register</a>
             {% endif %}
             </div>
           </div>
         </div>
       </nav>
-      <br>
     </header>
+    <div class="buffer"></div>
+
+      {% if user.is_authenticated %}
+      {% else %}
+        {% if request.path == '/' %}
+          <div class = "banner" >
+            <img class="banner-img" src="{% static 'blog/home_content/home_banner.png' %}" alt="" >
+              <button class="b_button" type="button" name="button"><span class="button-txt">Sign-Up</span></button>
+          </div>
+          {% endif %}
+      {% endif %}
+
+
+    <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="logout-modal-header">
+        </div>
+        <div class="modal-body logout-modal-body">
+
+          <div class="logout-modal-title">
+            <h2><strong>ARE YOU SURE YOU WANT TO LEAVE?</strong></h2>
+          </div>
+          <a  href="{% url 'logout' %}" ><button type="button" class="logout_button" name="button"><span class="logout-button-txt">LOGOUT</span></button></a>
+          <button type="button" class="logout_button" data-dismiss="modal"><span class="logout-button-txt">NO</span></button>
+        </div>
+        <div class="logout-modal-footer">
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+      <div class="modal fade" id="modalLogin" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
+
+
+
 
     <main role="main" class="home-container container">
         <div class="col-md-12">
@@ -84,11 +135,14 @@
               </div>
             {% endfor %}
           {% endif %}
-            {% block content %}{% endblock %}
+          {% block content %}{% endblock %}
     </main>
 
-    <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
+    <script src="{% static '/main.js' %}" charset="utf-8"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>

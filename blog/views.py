@@ -17,6 +17,13 @@ def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
 
 
+def follow_users(request):
+    context = {
+        'users': User.objects.all()
+    }
+    return render(request, 'blog/follow_users.html', context)
+
+
 class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'
@@ -54,8 +61,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'project_image', 'date_posted',
-              'summary', 'content', 'contributors', 'git_link']
+    fields = ['title', 'project_image',
+              'summary', 'content', 'category']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -64,7 +71,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'project_image',
+              'summary', 'content', 'category']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

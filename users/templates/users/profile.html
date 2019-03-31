@@ -1,20 +1,36 @@
 {% extends "blog/base.html" %}
 {% block content %}
-<div class="content-section">
+<div class="content-section col-lg-4">
   <div class="profile-header">
     <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset class="form-group">
-        {{ u_form }}
-        <br>
-        {{ p_form }}
+        <div class="profile-name-edit">
+            <h1><strong>{{ u_form.username }}  </strong></h1>
+        </div>
+        <div class="profile-bio">
+          <p>{{ b_form }}</p>
+        </div>
+        <div class="profile-stats">
+          <p><i class="fas fa-heart"></i> 99 &nbsp <i class="fas fa-code"></i> 55 </p>
+        </div>
+        <div class="profile-line"></div>
+        <div class="profile-description-edit">
+          <p>{{ d_form }}</p>
+        </div>
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-dark" type="submit" name="button">Update</button>
-      </div>
-    </form>
+        <div class="profile-buttons">
+          <a href="{% url 'profile_view' %}">
+            <button type="submit" class="profile-button" name="button"><span class="profile-button-txt">Save Profile</span></button>
+          </a>
+          <a href="{% url 'profile_view' %}">
+            <button type="button" class="profile-button" name="button"><span class="profile-button-txt">Back</span></button>
+          </a>
+        </div>
+    </div>
+  </form>
   </div>
-
 </div>
 {% endblock content %}

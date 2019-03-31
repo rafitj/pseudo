@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+{% if message != '' %}
+    <div class="modal fade" id="modalProfileUpdate" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="message-modal-header">
+        </div>
+        <div class="modal-body message-modal-body">
+          <div class="message-modal-title">
+            <h2><strong><span id="modalmessage">{{ message }}</span></strong></h2>
+          </div>
+        </div>
+        <div class="message-modal-footer">
+        </div>
+      </div>
+    </div>
+    </div>
+{% endif %}
+
+<div class="content-section col-lg-4">
+  <div class="profile-header">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="profile-name">
+      <h1><strong>{{ user.username }}</strong></h1>
+    </div>
+    <div class="profile-bio">
+      <p>{{ user.profile.bio }}</p>
+    </div>
+    <div class="profile-stats">
+      <p><i class="fas fa-heart"></i> 99 &nbsp <i class="fas fa-code"></i> 55 </p>
+    </div>
+
+    <div class="profile-line"></div>
+
+    <div class="profile-description">
+      <p>{{ user.profile.description }}
+      </p>
+    </div>
+
+    {% if user.email != '' or user.profile.github != '' or user.profile.website != ''%}
+      <div class="profile-line"></div>
+    {% endif %}
+
+    <div class="profile-contact">
+      <p><i class="fas fa-envelope"></i>  {{ user.email }}</p>
+
+      {% if  user.profile.website != '' %}
+      <p> <i class="fas fa-globe-americas"></i> <a href="{{ user.profile.website }}"></a>{{ user.profile.website }}</p>
+      {% endif %}
+
+      {% if  user.profile.github != '' %}
+      <p><i class="fab fa-github"></i> <a href="{{ user.profile.github }}">{{ user.profile.github }}</a></p>
+      {% endif %}
+
+    </div>
+
+    <div class="profile-line"></div>
+
+    <div class="profile-skills">
+      <p> Skills </p>
+    </div>
+
+
+    <div class="profile-buttons">
+      <a href="{% url 'profile' %}"><button type="button" class="profile-button" name="button"><span class="profile-button-txt">Edit Profile</span></button></a>
+      <br>
+      <button type="button" class="profile-button"  name="button"><span class="profile-button-txt">New Password</span></button>
+      <br>
+      <button type="button" class="profile-button"  name="button"><span class="profile-button-txt">New Image</span></button>
+    </div>
+  </div>
+</div>
+{% endblock content %}

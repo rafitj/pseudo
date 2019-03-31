@@ -118,8 +118,12 @@ a.article-title:hover {
   font-size: 1.1rem;
   color: #fff;
   background-image: linear-gradient( to right, rgba(240,120,84,0.9), rgba(245,166,88, 0.9));
-  transition: 0.8s ease;
+  transition: transform 0.8s;
   vertical-align: middle;
+}
+
+.block:hover{
+  transform: translateY(-10px);
 }
 .author-span{
   font-weight: lighter;

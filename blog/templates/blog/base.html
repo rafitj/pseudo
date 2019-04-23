@@ -76,7 +76,7 @@
             </a>
             {% else %}
             <!-- data-toggle="modal" data-target="#modalLogin" -->
-            <a class="nav-item nav-link show-login" href="{% url 'login' %}" > <i class="fas fa-sign-in-alt"></i> Login</a>
+            <a class="nav-item nav-link show-login" href="#" data-toggle="modal" data-target="#modalLogin"> <i class="fas fa-sign-in-alt"></i> Login</a>
             <a class="navlistlast nav-item nav-link" href="{% url 'register' %}"><i class="fas fa-sign-in-alt"></i> Register</a>
             {% endif %}
             </div>
@@ -118,6 +118,51 @@
     </div>
 
 
+      <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="logout-modal-header">
+          </div>
+
+          <div class="modal-body login-modal-body">
+
+            <div class="logout-modal-title">
+              <h2><strong>LOGIN</strong></h2>
+            </div>
+
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <p><label for="id_username">Username:</label> <input id="id_username" type="text" name="username" maxlength="30" /></p>
+                <p><label for="id_password">Password:</label> <input type="password" name="password" id="id_password" /></p>
+
+                <input type="submit" value="Log in" />
+                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+            </form>
+
+              <br>
+              <small> <a class="signup-now" href="{% url 'password_reset' %}">Forgot your password?</a> </small>
+
+              <br>
+              <div class="social-container">
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="social-button"><i class="fab fa-google"></i></a>
+                <a href="{% url 'social:begin' 'facebook' %}" class="social-button"><i class="fab fa-facebook-f"></i></a>
+                <a href="{% url 'social:begin' 'twitter' %}" class="social-button"><i class="fab fa-twitter"></i></a>
+                <a href="{% url 'social:begin' 'github' %}" class="social-button"><i class="fab fa-github"></i></a>
+              </div>
+
+              <small class = "text-muted">Don't have an account?</small>
+              <br>
+              <a class="signup-now" href="{% url 'password_reset'%}">Sign-Up Now!</a>
+
+          </div>
+
+          <div class="logout-modal-footer">
+          </div>
+
+        </div>
+      </div>
+      </div>
+
 
     <main role="main" class="home-container container">
         <div class="col-md-12">
@@ -139,5 +184,6 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
    <script src="{% static '/main.js' %}" charset="utf-8"></script>
+
   </body>
 </html>

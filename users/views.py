@@ -13,11 +13,11 @@ from django.http import HttpResponseRedirect
 
 
 def login(request):
-    form = AuthenticationForm
+    login_form = AuthenticationForm
     context = {
-        'form': form
+        'login_form': login_form
     }
-    html_form = render_to_string('users/login.html', context, request=request)
+    html_form = render_to_string('users/index.html', context, request=request)
     return JsonResponse({'html_form': html_form})
 
 

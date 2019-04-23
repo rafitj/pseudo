@@ -1,6 +1,14 @@
-{% extends "blog/base.html" %}
+<form method="POST">
+  {% csrf_token %}
+  <fieldset class="form-group">
+    {{ login_form }}
+  </fieldset>
+  <div class="form-group">
+    <button class="btn btn-outline-info" type="submit" name="button">Login</button>
+  </div>
+</form>
 
-{% block content %}
+<!--
   <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -16,7 +24,7 @@
         <form method="POST">
           {% csrf_token %}
           <fieldset class="form-group">
-            {{ form }}
+            {{ login_form }}
           </fieldset>
           <div class="form-group">
             <button class="btn btn-outline-info" type="submit" name="button">Login</button>
@@ -45,5 +53,4 @@
 
     </div>
   </div>
-  </div>
-{% endblock content %}
+  </div> -->

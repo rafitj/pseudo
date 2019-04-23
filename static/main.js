@@ -88,7 +88,7 @@ $(window).load(function(){
 	}
 });
 
-if (window.location.href.indexOf('login') != -1) {
-	$('#modalLogin').modal('show')
-	console.log("hey");
-}
+// if (window.location.href.indexOf('login') != -1) {
+// 	$('#modalLogin').modal('show')
+// 	console.log("hey");
+// }

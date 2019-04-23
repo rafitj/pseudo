@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AdminPasswordChangeForm,
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UsernameUpdateForm, UserEmailUpdateForm, UserBioUpdateForm, UserDescUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserContactUpdateForm, UsernameUpdateForm, UserBioUpdateForm, UserDescUpdateForm, ProfileUpdateForm
 # Create your views here.
 from social_django.models import UserSocialAuth
 from django.http import JsonResponse
@@ -17,22 +17,22 @@ def login(request):
     context = {
         'form': form
     }
-    html_form = render_to_string('login.html', context, request=request)
+    html_form = render_to_string('users/login.html', context, request=request)
     return JsonResponse({'html_form': html_form})
 
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        r_form = UserRegisterForm(request.POST)
 
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
+        if r_form.is_valid():
+            r_form.save()
+            username = r_form.cleaned_data.get('username')
             messages.success(request, "Account created for " + str(username) + "!")
             return redirect('login')
     else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+        r_form = UserRegisterForm()
+    return render(request, 'users/register.html', {'r_form': r_form})
 
 
 @login_required
@@ -88,26 +88,29 @@ def password(request):
 @login_required
 def profile(request):
     message = ''
-
     if request.method == 'POST':
-        u_form = UsernameUpdateForm(request.POST, instance=request.user, user=request.user)
-        b_form = UserBioUpdateForm(request.POST, instance=request.user.profile)
+        u_form = UsernameUpdateForm(request.POST, instance=request.user)
+        b_form = UserContactUpdateForm(request.POST, instance=request.user.profile)
+        c_form = UserBioUpdateForm(request.POST, instance=request.user.profile)
         d_form = UserDescUpdateForm(request.POST, instance=request.user.profile)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if u_form.is_valid() and p_form.is_valid():
+        if u_form.is_valid() and p_form.is_valid() and c_form.is_valid():
             u_form.save()
             p_form.save()
+            c_form.save()
             b_form.save()
             d_form.save()
             context = {'message': "Profile Updated!"}
             return render(request, 'users/profile_view.html', context)
             # return redirect('profile_view')
     else:
-        u_form = UsernameUpdateForm(request.POST, instance=request.user, user=request.user)
+        u_form = UsernameUpdateForm(instance=request.user)
         b_form = UserBioUpdateForm(instance=request.user.profile)
         d_form = UserDescUpdateForm(instance=request.user.profile)
+        c_form = UserContactUpdateForm(instance=request.user.profile)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-    context = {'u_form': u_form, 'p_form': p_form, 'b_form': b_form, 'd_form': d_form}
+    context = {'u_form': u_form, 'p_form': p_form,
+               'b_form': b_form, 'd_form': d_form, 'c_form': c_form}
     return render(request, 'users/profile.html', context)
 
 

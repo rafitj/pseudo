@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
 {% block content %}
-
 {% if message != '' %}
     <div class="modal fade" id="modalProfileUpdate" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -44,14 +43,14 @@
     {% endif %}
 
     <div class="profile-contact">
-      <p><i class="fas fa-envelope"></i>  {{ user.email }}</p>
+      <p><i class="fas fa-envelope"></i> &nbsp; {{ user.email }}</p>
 
       {% if  user.profile.website != '' %}
-      <p> <i class="fas fa-globe-americas"></i> <a href="{{ user.profile.website }}"></a>{{ user.profile.website }}</p>
+      <p> <i class="fas fa-globe-americas"></i> <a href="{{ user.profile.website }}"></a> &nbsp; {{ user.profile.website }}</p>
       {% endif %}
 
       {% if  user.profile.github != '' %}
-      <p><i class="fab fa-github"></i> <a href="{{ user.profile.github }}">{{ user.profile.github }}</a></p>
+      <p><i class="fab fa-github"></i> <a href="{{ user.profile.github }}"> &nbsp; {{ user.profile.github }}</a></p>
       {% endif %}
 
     </div>

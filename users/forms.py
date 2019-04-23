@@ -15,34 +15,41 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 
-class UserEmailUpdateForm(forms.ModelForm):
-    email = forms.EmailField(label='', widget=forms.EmailInput(
+class UserContactUpdateForm(forms.ModelForm):
+    email = forms.EmailField(required=False, label='', widget=forms.EmailInput(
         attrs={
             'class': 'my-form-control col-md-12',
             'placeholder': 'Email',
-            'maxlength': '20',
+            'autocomplete': 'off'
+        }
+    ))
+    github = forms.URLField(required=False, label='', widget=forms.URLInput(
+        attrs={
+            'class': 'my-form-control col-md-12',
+            'placeholder': 'Github',
+            'autocomplete': 'off'
+        }
+    ))
+    website = forms.URLField(required=False, label='', widget=forms.URLInput(
+        attrs={
+            'class': 'my-form-control col-md-12',
+            'placeholder': 'Website',
             'autocomplete': 'off'
         }
     ))
 
     class Meta:
-        model = User
-        fields = ['email']
+        model = Profile
+        fields = ['email', 'github', 'website']
 
 
 class UsernameUpdateForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user')
-        super(UsernameUpdateForm, self).__init__(*args, **kwargs)
-
-    # curr_user = self.user.username
-
     username = forms.CharField(label='', widget=forms.TextInput(
         attrs={
             'class': 'my-form-control profile-name-edit',
             'placeholder': 'Username',
             'maxlength': '20',
-            'autocomplete': 'off',
+            'autocomplete': 'off'
         }))
 
     class Meta:
@@ -62,7 +69,7 @@ class UserDescUpdateForm(forms.ModelForm):
         }))
 
     class Meta:
-        model = User
+        model = Profile
         fields = ['description']
 
 
@@ -76,7 +83,7 @@ class UserBioUpdateForm(forms.ModelForm):
         }))
 
     class Meta:
-        model = User
+        model = Profile
         fields = ['bio']
 
 

@@ -1,30 +1,49 @@
-{% load crispy_forms_tags %}
+{% extends "blog/base.html" %}
 
-<form method="POST">
-  {% csrf_token %}
-  <div class="modal-header">
-    <h5 class="modal-title"> Login </h5>
-  </div>
-  <div class="modal-body">
-    {{ form|crispy }}
-    <button class="btn btn-outline-info" type="submit" name="button">Login</button>
-  <small>
-    <a href="{% url 'password_reset' %}">Forgot your password?</a>
-  </small>
-  <!-- <br>
-  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'github' %}"> GitHub</a></button>
-  <br>
-  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'twitter' %}"> Twitter</a></button>
-  <br>
-  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'facebook' %}"> Facebook</a></button>
-  <br>
-  <button class="btn btn-outline-info"  name="button"><a href="{% url 'social:begin' 'google-oauth2' %}"> Google </a></button> -->
+{% block content %}
+  <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="logout-modal-header">
+      </div>
 
-  </div>
+      <div class="modal-body login-modal-body">
 
-  <div class="modal-footer">
-    <div class="border-top pt-3">
-    <small class = "text-muted">Don't have an account?</small>
-    <a class="ml-2" href="{% url 'password_reset'%}">Sign up here!</a>
+        <div class="logout-modal-title">
+          <h2><strong>LOGIN</strong></h2>
+        </div>
+
+        <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            {{ form }}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit" name="button">Login</button>
+          </div>
+        </form>
+
+          <br>
+          <small> <a class="signup-now" href="{% url 'password_reset' %}">Forgot your password?</a> </small>
+
+          <br>
+          <div class="social-container">
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="social-button"><i class="fab fa-google"></i></a>
+            <a href="{% url 'social:begin' 'facebook' %}" class="social-button"><i class="fab fa-facebook-f"></i></a>
+            <a href="{% url 'social:begin' 'twitter' %}" class="social-button"><i class="fab fa-twitter"></i></a>
+            <a href="{% url 'social:begin' 'github' %}" class="social-button"><i class="fab fa-github"></i></a>
+          </div>
+
+          <small class = "text-muted">Don't have an account?</small>
+          <br>
+          <a class="signup-now" href="{% url 'password_reset'%}">Sign-Up Now!</a>
+
+      </div>
+
+      <div class="logout-modal-footer">
+      </div>
+
+    </div>
   </div>
-</form>
+  </div>
+{% endblock content %}

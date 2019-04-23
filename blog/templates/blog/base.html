@@ -75,7 +75,8 @@
               <!-- <img class = "nav-icons" src="{% static 'blog/nav_icons/logout_icon.svg' %}" alt=""> -->
             </a>
             {% else %}
-            <a class="nav-item nav-link show-login" href="{% url 'login' %}" data-toggle="modal" data-target="#modalLogin"> <i class="fas fa-sign-in-alt"></i> Login</a>
+            <!-- data-toggle="modal" data-target="#modalLogin" -->
+            <a class="nav-item nav-link show-login" href="{% url 'login' %}" > <i class="fas fa-sign-in-alt"></i> Login</a>
             <a class="navlistlast nav-item nav-link" href="{% url 'register' %}"><i class="fas fa-sign-in-alt"></i> Register</a>
             {% endif %}
             </div>
@@ -106,8 +107,8 @@
           <div class="logout-modal-title">
             <h2><strong>ARE YOU SURE YOU WANT TO LEAVE?</strong></h2>
           </div>
-          <a  href="{% url 'logout' %}" ><button type="button" class="logout_button" name="button"><span class="logout-button-txt">LOGOUT</span></button></a>
-          <button type="button" class="logout_button" data-dismiss="modal"><span class="logout-button-txt">NO</span></button>
+          <a  href="{% url 'logout' %}" ><button type="button" class="logout_button logout_button_logout" name="button"><span class="logout-button-txt">LOGOUT</span></button></a>
+          <button type="button" class="logout_button logout_button_no" data-dismiss="modal"><span class="logout-button-txt">NO</span></button>
         </div>
         <div class="logout-modal-footer">
 
@@ -115,14 +116,6 @@
       </div>
     </div>
     </div>
-
-      <div class="modal fade" id="modalLogin" >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        </div>
-      </div>
-    </div>
-
 
 
 
@@ -141,9 +134,10 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
-    <script src="{% static '/main.js' %}" charset="utf-8"></script>
+
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
+   <script src="{% static '/main.js' %}" charset="utf-8"></script>
   </body>
 </html>

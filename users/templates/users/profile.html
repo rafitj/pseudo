@@ -7,7 +7,7 @@
       {% csrf_token %}
       <fieldset class="form-group">
         <div class="profile-name-edit">
-            <h1><strong>{{ u_form.username }}  </strong></h1>
+            <h1><strong>{{ u_form }} </strong></h1>
         </div>
         <div class="profile-bio">
           <p>{{ b_form }}</p>
@@ -19,6 +19,21 @@
         <div class="profile-description-edit">
           <p>{{ d_form }}</p>
         </div>
+
+          <div class="profile-line"></div>
+
+          <div class="profile-contact">
+          <p><i class="fas fa-envelope"></i> {{ c_form.email }}</p>
+
+          <p> <i class="fas fa-globe-americas"></i>{{ c_form.website }}</p>
+
+          <p><i class="fab fa-github"></i> {{ c_form.github }}</p>
+
+          </div>
+
+          <div class="profile-line"></div>
+
+
       </fieldset>
       <div class="form-group">
         <div class="profile-buttons">

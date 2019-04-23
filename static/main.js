@@ -79,10 +79,16 @@ $(document).ready(function(){
 	});
 
 })
-jQuery(window).load(function(){
+
+$(window).load(function(){
 	var message = $( "#modalmessage" ).text();
 	console.log(message);
 	if (message != ''){
 		$("#modalProfileUpdate").modal({ show : true });
 	}
 });
+
+if (window.location.href.indexOf('login') != -1) {
+	$('#modalLogin').modal('show')
+	console.log("hey");
+}

@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'social_django',
     'chat',
     'channels',
-    'widget_tweaks'
+    'widget_tweaks',
+    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [

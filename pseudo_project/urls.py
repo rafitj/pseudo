@@ -24,7 +24,6 @@ urlpatterns = [
     path('password-reset/complete', auth_views.PasswordResetCompleteView.as_view(
         template_name='users/password_reset_complete.html'), name='password_reset_complete'),
     path('', include('blog.urls')),
-
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^settings/$', user_views.settings, name='settings'),
     url(r'^settings/password/$', user_views.password, name='password'),

@@ -126,23 +126,42 @@
 
           <div class="modal-body login-modal-body">
 
-            <div class="logout-modal-title">
+            <div class="login-modal-title">
               <h2><strong>LOGIN</strong></h2>
             </div>
+ 
 
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
-                <p><label for="id_username">Username:</label> <input id="id_username" type="text" name="username" maxlength="30" /></p>
-                <p><label for="id_password">Password:</label> <input type="password" name="password" id="id_password" /></p>
+                <div class="sm-form">
+                  <i class="fas fa-user prefix"></i>
+                   <input onkeyup='saveValue(this);' id="id_username"  class="form-control validate " type="text" name="username" maxlength="30" />
+                  {% if messages %}
+                    <i class="login_error_icon fas fa-exclamation"></i>
+                  {% endif %}
+                </div>
 
-                <input type="submit" value="Log in" />
+                <div class="sm-form">
+                  <i class="fas fa-lock prefix"></i>
+                  <input onkeyup='saveValue(this);' type="password" class="bottom-form-control form-control validate " name="password" id="id_password" />
+                  {% if messages %}
+                    <i class="login_error_icon fas fa-exclamation"></i>
+                  {% endif %}
+                </div>
+                <div class="forgot_pass_div">
+                  <small> <a class="forgot_pass" href="{% url 'password_reset' %}">Forgot your password?</a> </small>
+                </div>
+
+                <button type="submit" onclick= "loginError()" class="login_button" name="button"><span class="login_button_text">Login</span></button>
                 <input type="hidden" name="next" value="{{ request.get_full_path }}" />
             </form>
 
-              <br>
-              <small> <a class="signup-now" href="{% url 'password_reset' %}">Forgot your password?</a> </small>
 
-              <br>
+
+              <div class="or_connect_with">
+                <small class = "muted_text">OR CONNECT WITH </small>
+              </div>
+
               <div class="social-container">
                 <a href="{% url 'social:begin' 'google-oauth2' %}" class="social-button"><i class="fab fa-google"></i></a>
                 <a href="{% url 'social:begin' 'facebook' %}" class="social-button"><i class="fab fa-facebook-f"></i></a>
@@ -150,9 +169,11 @@
                 <a href="{% url 'social:begin' 'github' %}" class="social-button"><i class="fab fa-github"></i></a>
               </div>
 
-              <small class = "text-muted">Don't have an account?</small>
+              <hr>
+
+              <small class = "muted_text"> Don't have an account?</small>
               <br>
-              <a class="signup-now" href="{% url 'password_reset'%}">Sign-Up Now!</a>
+              <a class="signup-now" href="{% url 'register'%}">Sign-Up Now!</a>
 
           </div>
 
@@ -166,13 +187,13 @@
 
     <main role="main" class="home-container container">
         <div class="col-md-12">
-          {% if messages %}
+          <!-- {% if messages %}
             {% for message in messages %}
               <div class="alert alert-{{ message.tags }}">
                 {{ message }}
               </div>
             {% endfor %}
-          {% endif %}
+          {% endif %} -->
           {% block content %}{% endblock %}
     </main>
 
@@ -184,6 +205,30 @@
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
    <script src="{% static 'blog/posts.js' %}" charset="utf-8"></script>
    <script src="{% static '/main.js' %}" charset="utf-8"></script>
+
+   <script>
+     {% if messages %}
+     		$('#modalLogin').modal('show');
+     {% endif %}
+     document.getElementById("id_password").value = getSavedValue("id_password");    // set the value to this input
+     document.getElementById("id_username").value = getSavedValue("id_username");   // set the value to this input
+     /* Here you can add more inputs to set value. if it's saved */
+
+     //Save the value function - save it to localStorage as (ID, VALUE)
+     function saveValue(e){
+         var id = e.id;  // get the sender's id to save it .
+         var val = e.value; // get the value.
+         localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override .
+     }
+
+     //get the saved value function - return the value of "v" from localStorage.
+     function getSavedValue  (v){
+         if (!localStorage.getItem(v)) {
+             return "Username";// You can change this to your defualt value.
+         }
+         return localStorage.getItem(v);
+     }
+   </script>
 
   </body>
 </html>

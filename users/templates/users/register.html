@@ -1,12 +1,64 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
+{% load myfilters %}
+
 {% block content %}
   <div class="content-section">
     <form method="POST">
       {% csrf_token %}
       <fieldset class="form-group">
-        <legend class="border-bottom mb-4"> Join Today </legend>
-        {{ r_form|crispy }}
+        <div class="m-4 login-modal-title">
+          <h2><strong>Register Today</strong></h2>
+        </div>
+        <div class="">
+          <i class=" reg_icon fas fa-user-alt "></i>{{ r_form.username|addclass:'form-control' }}
+          {% if r_form.username.errors%}
+          <i class="login_error_icon fas fa-exclamation"></i>
+
+          {% for error in r_form.username.errors%}
+          <p class="muted_text"><small>{{ error }}</small></p>
+          {% endfor %}
+          <div class="mb-1"></div>
+
+        {% endif %}
+
+        </div>
+
+        <div class="">
+          <i class=" reg_icon fas fa-envelope"></i> {{ r_form.email|addclass:'form-control'  }}
+          {% if r_form.email.errors%}
+          <i class="login_error_icon fas fa-exclamation"></i>
+
+            {% for error in r_form.email.errors%}
+            <p class="muted_text"><small>{{ error }}</small></p>
+            {% endfor %}
+            <div class="mb-1"></div>
+          {% endif %}
+
+        </div>
+
+        <div class="">
+          <i class=" reg_icon fas fa-lock"></i>{{ r_form.password1|addclass:'form-control'  }}
+          {% if r_form.username.errors%}
+          <i class="login_error_icon fas fa-exclamation"></i>
+          {% endif %}
+        </div>
+
+
+        <div class="">
+          <i class=" reg_icon fas fa-lock"></i>{{ r_form.password2|addclass:'form-control'  }}
+          {% if r_form.username.errors%}
+          <i class="login_error_icon fas fa-exclamation"></i>
+
+          {% for error in r_form.password2.errors%}
+          <p class="muted_text"><small>{{ error }}</small></p>
+          {% endfor %}
+          <div class="mb-1"></div>
+
+        {% endif %}
+
+        </div>
+
       </fieldset>
       <div class="form-group">
         <button class="btn btn-outline-info" type="submit" name="button">Sign Up</button>

@@ -105,6 +105,14 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   -webkit-text-fill-color: transparent;
 }
 
+.login-modal-title{
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: -webkit-linear-gradient(#f5a658, #f07854);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .logout-modal-body{
   padding: 3rem 4rem;
   background: #202122;
@@ -117,7 +125,7 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
 .login-modal-body{
   padding: 3rem 4rem;
   background: #202122;
-  height: 28rem;
+  height: 32rem;
   text-align: center;
   margin-bottom: -1px;
   margin-top: -1px;
@@ -125,7 +133,7 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
 
 .logout-modal-footer{
   background-image: linear-gradient(90deg, #f5a658, #f07854);
-  height: 0.9rem;
+  height: 1.1rem;
 }
 
 .logout-modal-header{
@@ -134,13 +142,14 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
 }
 
 .logout_button {
+  margin-top: 1rem;
+  background: #202122;
+  border: 2px solid #444 ;
   height: 3rem;
   margin: 0 0.5rem;
   outline: none;
   text-align: center;
-  border-radius: 40px;
-  border-style: none;
-  background: -webkit-linear-gradient(#f5a658, #f07854);
+  border-radius: 30px;
   letter-spacing: 1px;
   text-shadow: 0;
   font-size: 15px;
@@ -155,14 +164,17 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   width: 5.5rem;
 }
 .logout_button:hover {
-  transform: scale(1.05);
+  border: 2px solid #f07854 ;
+  box-shadow: 0px 0px 10px #181818;
+  transform: scale(1.1);
 }
 .logout-button-txt{
   font-size: 1.3rem;
-  font-weight: 700;
-  color: #202122;
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.logout_button:active, .logout_button:focus,.b_button:active, .b_button:focus  {
+.logout_button:active, .logout_button:focus, .login_button:active, .login_button:focus, .b_button:active, .b_button:focus  {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	outline: none;
@@ -191,9 +203,11 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   z-index: 10;
   font-size: 1.7rem;
   color: #333;
+  transition: all 0.25s ease;
 }
 
 .social-button:hover {
+  transform: scale(1.1);
   border: 2px solid transparent;
   background-image: linear-gradient(#202122, #202122), linear-gradient(90deg, #f5a658, #f07854);
   background-origin: border-box;
@@ -210,6 +224,14 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.25s ease;
+}
+
+.login_icons{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+  margin-right: 0.4rem;
 }
 
 .signup-now:hover{
@@ -229,4 +251,85 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   .navlistlast{
     margin-bottom: 0.5rem;
   }
+}
+
+.form-control{
+  display: inline;
+  width: 75%;
+  margin: 0.5rem 0.5rem;
+}
+
+.bottom-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+}
+
+.forgot_pass_div{
+  text-align: right;
+  padding: 0 10%;
+}
+
+
+.forgot_pass{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.forgot_pass:hover{
+  opacity: 0.5;
+}
+
+.login_button{
+  margin-top: 1rem;
+  background: #202122;
+  border-radius: 20px;
+  border: 2px solid #444 ;
+  width: 7rem;
+  height: 2.5rem;
+  transition: all 0.25s ease;
+}
+
+.login_button:hover{
+  cursor: pointer;
+  border: 2px solid #f07854 ;
+  box-shadow: 0px 0px 10px #181818;
+  transform: scale(1.1);
+}
+
+.login_button_text{
+  font-size: 1.3rem;
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+hr{
+  height: 1px;
+  color: #444;
+  background-color: #444;
+  margin-bottom: 0.5rem;
+  width: 80%;
+  outline-color: #444;
+}
+
+.muted_text{
+  color: #444;
+}
+
+.or_connect_with{
+  margin-top: 1rem;
+}
+
+.login_error_icon{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.reg_icon{
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }

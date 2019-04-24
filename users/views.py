@@ -10,15 +10,40 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import authenticate, login
 
 
-def login(request):
-    login_form = AuthenticationForm
-    context = {
-        'login_form': login_form
-    }
-    html_form = render_to_string('users/index.html', context, request=request)
-    return JsonResponse({'html_form': html_form})
+def login_view(request):
+    login_form = AuthenticationForm()
+    if request.method == 'POST':
+        login_form = AuthenticationForm(data=request.POST)
+
+        if login_form.is_valid():
+            login(request, login_form.get_user())
+            return redirect(request.META['HTTP_REFERER'])
+
+        else:
+            messages.add_message(request, messages.WARNING, "Incorrect Login!")
+            return redirect(request.META['HTTP_REFERER'])
+
+    return render(request, 'users/login.html', {'login_form': login_form})
+
+# def login(request):
+#     if request.method == 'POST':
+#         login_form = AuthenticationForm(request.POST)
+#         if login_form.is_valid():
+#             user = login_form.login(request)
+#             if user:
+#                 login(request, user)
+#                 return HttpResponseRedirect(self.request.path_info)
+#         else:
+#             print(login_form.errors)
+#     else:
+#         login_form = AuthenticationForm()
+#     # html_form = render_to_string('users/index.html', context, request=request)
+#     # return JsonResponse({'html_form': html_form})
+#     return render(request, 'users/login.html', {'login_form': login_form})
 
 
 def register(request):
@@ -26,10 +51,12 @@ def register(request):
         r_form = UserRegisterForm(request.POST)
 
         if r_form.is_valid():
-            r_form.save()
-            username = r_form.cleaned_data.get('username')
-            messages.success(request, "Account created for " + str(username) + "!")
-            return redirect('login')
+            new_user = r_form.save()
+            new_user = authenticate(username=r_form.cleaned_data['username'],
+                                    password=r_form.cleaned_data['password1'])
+            login(request, new_user)
+            return redirect('profile')
+
     else:
         r_form = UserRegisterForm()
     return render(request, 'users/register.html', {'r_form': r_form})

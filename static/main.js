@@ -87,8 +87,3 @@ $(window).load(function(){
 		$("#modalProfileUpdate").modal({ show : true });
 	}
 });
-
-// if (window.location.href.indexOf('login') != -1) {
-// 	$('#modalLogin').modal('show')
-// 	console.log("hey");
-// }

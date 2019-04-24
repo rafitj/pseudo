@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'blog.apps.BlogConfig',
+    'users.templatetags.myfilters',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,11 +46,10 @@ INSTALLED_APPS = [
     'chat',
     'channels',
     'widget_tweaks',
-    'bootstrap_modal_forms',
 ]
 
 MIDDLEWARE = [
-    'users.middleware.login_middleware.LoginFormMiddleware',
+    # 'users.middleware.login_middleware.LoginFormMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -87,3 +87,11 @@ $(window).load(function(){
 		$("#modalProfileUpdate").modal({ show : true });
 	}
 });
+
+function signup_now(){
+	$("#modalLogin").modal('hide');
+}
+
+function login_now(){
+	$("#modalRegister").modal('hide');
+}

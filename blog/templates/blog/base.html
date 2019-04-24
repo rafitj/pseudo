@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{% static 'blog/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/profile.css' %}">
     <link rel="stylesheet" href="{% static 'blog/posts.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/about.css' %}">
 
 
     {% if title %}
@@ -37,7 +38,7 @@
 
           <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-fire"></i> Discover </a>
           <a class="nav-item nav-anchor nav-link" href="{% url 'follow_users' %}"> <i class="fas fa-user-friends"></i> Follow </a>
-          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-question-circle"></i> About </a>
+          <a class="nav-item nav-anchor nav-link" href="{% url 'about' %}"> <i class="fas fa-question-circle"></i> About </a>
           <!-- <i class="fas fa-search"></i>  -->
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +78,7 @@
             {% else %}
             <!-- data-toggle="modal" data-target="#modalLogin" -->
             <a class="nav-item nav-link show-login" href="#" data-toggle="modal" data-target="#modalLogin"> <i class="fas fa-sign-in-alt"></i> Login</a>
-            <a class="navlistlast nav-item nav-link" href="{% url 'register' %}"><i class="fas fa-sign-in-alt"></i> Register</a>
+            <a class="navlistlast nav-item nav-link" href="{% url 'register' %}" data-toggle="modal" data-target="#modalRegister"><i class="fas fa-sign-in-alt"></i> Sign-Up</a>
             {% endif %}
             </div>
           </div>
@@ -129,31 +130,35 @@
             <div class="login-modal-title">
               <h2><strong>LOGIN</strong></h2>
             </div>
- 
+
 
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <div class="sm-form">
                   <i class="fas fa-user prefix"></i>
-                   <input onkeyup='saveValue(this);' id="id_username"  class="form-control validate " type="text" name="username" maxlength="30" />
-                  {% if messages %}
-                    <i class="login_error_icon fas fa-exclamation"></i>
-                  {% endif %}
+                   <input placeholder="Username" onkeyup='saveValue(this);' id="id_username"  class="form-control validate " type="text" name="username" maxlength="30" />
+                  {% for message in messages %}
+                    {% if "login_error" in message.tags %}
+                      <i class="login_error_icon fas fa-exclamation"></i>
+                    {% endif %}
+                  {% endfor %}
                 </div>
 
                 <div class="sm-form">
                   <i class="fas fa-lock prefix"></i>
-                  <input onkeyup='saveValue(this);' type="password" class="bottom-form-control form-control validate " name="password" id="id_password" />
-                  {% if messages %}
-                    <i class="login_error_icon fas fa-exclamation"></i>
-                  {% endif %}
+                  <input placeholder="Password" onkeyup='saveValue(this);' type="password" class="bottom-form-control form-control validate " name="password" id="id_password" />
+                  {% for message in messages %}
+                    {% if "login_error" in message.tags %}
+                      <i class="login_error_icon fas fa-exclamation"></i>
+                    {% endif %}
+                  {% endfor %}
                 </div>
                 <div class="forgot_pass_div">
                   <small> <a class="forgot_pass" href="{% url 'password_reset' %}">Forgot your password?</a> </small>
                 </div>
 
                 <button type="submit" onclick= "loginError()" class="login_button" name="button"><span class="login_button_text">Login</span></button>
-                <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                <!-- <input type="hidden" name="next" value="{{ request.get_full_path }}" /> -->
             </form>
 
 
@@ -173,7 +178,7 @@
 
               <small class = "muted_text"> Don't have an account?</small>
               <br>
-              <a class="signup-now" href="{% url 'register'%}">Sign-Up Now!</a>
+              <a class="signup-now" onclick="signup_now()" data-toggle="modal" data-target="#modalRegister">Sign-Up Now!</a>
 
           </div>
 
@@ -183,6 +188,116 @@
         </div>
       </div>
       </div>
+
+
+      <!-- Register Modal -->
+
+      <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="logout-modal-header">
+          </div>
+
+              <div class="modal-body signup-modal-body ">
+
+                <div class="mb-0 login-modal-title">
+                  <h2 class="mb-1"><strong>SIGN-UP</strong></h2>
+                </div>
+
+
+                <form method="post" action="{% url 'register' %}">
+                    {% csrf_token %}
+
+                    <div class="sm-form">
+                      <i class="fas fa-user prefix"></i>
+                       <input placeholder="Username" onkeyup='saveValue(this);' id="id_username2"  class="top-form-control form-control validate " type="text" name="username" maxlength="30" />
+                       {% for message in messages|slice:":1" %}
+                          {%if "username" in message.tags %}
+                            {%if "valid username" in message.message %}
+                            <i class="login_error_icon fas fa-exclamation"></i>
+                            <p class="mt-0 error_text">  {{"Please enter a valid username."}} </p>
+
+                            {% else %}
+                            <i class="login_error_icon fas fa-exclamation"></i>
+                            <div class="m-0 mb-0">
+                              <p class="mb-0 mr-0 mt-0 error_text">  {{message}} </p>
+                            </div>
+                            {% endif %}
+                          {% endif %}
+                       {% endfor %}
+
+                    </div>
+
+                    <div class="sm-form">
+                      <i class="fas fa-envelope"></i>
+                      <input placeholder="Email" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="email" id="id_email" />
+                      {%for message in messages|slice:":1" %}
+                         {%if "email" in message.tags %}
+                           <i class="login_error_icon fas fa-exclamation"></i>
+                           <div class="m-0 mb-0">
+                             <p class="mb-0  mr-0 mt-0 error_text">  {{message}} </p>
+                           </div>
+                         {%endif%}
+                      {%endfor%}
+                    </div>
+
+                    <div class="sm-form">
+                      <i class="fas fa-lock prefix"></i>
+                      <input placeholder="Password" type="password" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="password1" id="id_password1" />
+                      {%for message in messages|slice:":1" %}
+                         {%if "password" in message.tags %}
+                           <i class="login_error_icon fas fa-exclamation"></i>
+                         {%endif%}
+                      {%endfor%}
+                    </div>
+
+                    <div class="sm-form">
+                      <i class="fas fa-lock prefix"></i>
+                      <input placeholder="Verify Password" type="password" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="password2" id="id_password2" />
+                      {% for message in messages|slice:":1" %}
+                         {%if "password" in message.tags %}
+                           <i class="login_error_icon fas fa-exclamation"></i>
+                           <div class="m-0 mb-0 mr-0">
+                             <p class="mb-0 mr-0 mt-0 error_text">  {{message}} </p>
+                           </div>
+                         {% endif %}
+                      {% endfor %}
+                    </div>
+                    <button type="submit" onclick= "signupError()" class="login_button" name="button"><span class="login_button_text">Sign-Up</span></button>
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                </form>
+
+
+
+                  <div class="or_connect_with">
+                    <small class = "muted_text">OR CONNECT WITH </small>
+                  </div>
+
+                  <div class="social-container">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="social-button"><i class="fab fa-google"></i></a>
+                    <a href="{% url 'social:begin' 'facebook' %}" class="social-button"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{% url 'social:begin' 'twitter' %}" class="social-button"><i class="fab fa-twitter"></i></a>
+                    <a href="{% url 'social:begin' 'github' %}" class="social-button"><i class="fab fa-github"></i></a>
+                  </div>
+
+                  <hr>
+
+                  <small class = "muted_text"> Already have an account?</small>
+                  <br>
+                  <a class="signup-now" onclick="login_now()" data-toggle="modal" data-target="#modalLogin">Login Now!</a>
+
+              </div>
+
+
+
+
+          <div class="logout-modal-footer">
+          </div>
+
+        </div>
+      </div>
+      </div>
+
 
 
     <main role="main" class="home-container container">
@@ -197,6 +312,11 @@
           {% block content %}{% endblock %}
     </main>
 
+    <footer class="base_footer">
+      <div class="footer_border"></div>
+      <div class="footer_body"></div>
+    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -207,27 +327,67 @@
    <script src="{% static '/main.js' %}" charset="utf-8"></script>
 
    <script>
-     {% if messages %}
-     		$('#modalLogin').modal('show');
-     {% endif %}
-     document.getElementById("id_password").value = getSavedValue("id_password");    // set the value to this input
-     document.getElementById("id_username").value = getSavedValue("id_username");   // set the value to this input
-     /* Here you can add more inputs to set value. if it's saved */
+     {% for message in messages %}
+       {% if "login_error" in message.tags %}
+         $('#modalRegister').modal('hide');
+         $('#modalLogin').modal('show');
+       {% endif %}
+     {% endfor %}
 
-     //Save the value function - save it to localStorage as (ID, VALUE)
+     {% for message in messages %}
+       {% if "username" in message.tags or "email" in message.tags or "password" in message.tags %}
+         $('#modalLogin').modal('hide');
+         $('#modalRegister').modal('show');
+       {% endif %}
+     {% endfor %}
+
      function saveValue(e){
-         var id = e.id;  // get the sender's id to save it .
-         var val = e.value; // get the value.
-         localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override .
+         var id = e.id;
+         var val = e.value;
+         localStorage.setItem(id, val);
      }
 
-     //get the saved value function - return the value of "v" from localStorage.
-     function getSavedValue  (v){
+     function getSavedValue (v){
          if (!localStorage.getItem(v)) {
-             return "Username";// You can change this to your defualt value.
+             return "";
          }
          return localStorage.getItem(v);
      }
+
+     function output_all(){
+       document.getElementById("id_password").value = getSavedValue("id_password");
+       document.getElementById("id_username").value = getSavedValue("id_username");
+       document.getElementById("id_username2").value = getSavedValue("id_username2");
+       document.getElementById("id_email").value = getSavedValue("id_email");
+       document.getElementById("id_password1").value = getSavedValue("id_password1");
+       document.getElementById("id_password2").value = getSavedValue("id_password2");
+     }
+
+     function signupError(){
+       localStorage.setItem("signupError", "true");
+       localStorage.setItem("loginError", "false");
+     }
+     function loginError(){
+       localStorage.setItem("loginError", "true");
+       localStorage.setItem("signupError", "false");
+     }
+
+     $(document).ready(function(){
+         if (getSavedValue("signupError") == "true"){
+           localStorage.removeItem("id_username");
+           localStorage.removeItem("id_password");
+         }
+         else {
+           localStorage.removeItem("id_username2");
+           localStorage.removeItem("id_email");
+           localStorage.removeItem("id_password1");
+           localStorage.removeItem("id_password2");
+         }
+         output_all();
+      })
+
+
+
    </script>
 
   </body>

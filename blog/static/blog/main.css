@@ -95,6 +95,7 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
   padding: 0rem 0rem;
   padding-top: 0;
   padding-bottom: 0;
+  box-shadow: 0px 0px 15px #131313;
 }
 
 .logout-modal-title{
@@ -236,6 +237,7 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
 
 .signup-now:hover{
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 991px) {
@@ -262,6 +264,15 @@ nav, .navbar, .navbar-expand-md, .navbar-dark, .bg-steel, .fixed-top {
 .bottom-form-control{
   display: inline;
   width: 75%;
+  margin-bottom: 0.1rem;
+}
+.not-top-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+  margin-top: 0.8rem;
+}
+.top-form-control{
   margin-bottom: 0.1rem;
 }
 
@@ -332,4 +343,37 @@ hr{
 .reg_icon{
   font-size: 1.5rem;
   margin-right: 0.5rem;
+}
+
+.error_text{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 0.7rem;
+  margin:0;
+  padding-top: 0.1rem;
+}
+
+.signup-modal-body{
+  padding: 3rem 4rem;
+  background: #202122;
+  height: 39rem;
+  text-align: center;
+  margin-bottom: -1px;
+  margin-top: -1px;
+}
+
+.base_footer{
+  margin-top: 2rem;
+  background-color: #202122;
+  height: 4.5rem;
+
+  width: 100%;
+  color: #444;
+  text-align: center;
+}
+
+.footer_border{
+  background-image: linear-gradient(-90deg, #f5a658, #f07854);
+  height: 0.5rem;
 }

@@ -1,7 +1,19 @@
 {% extends "blog/base.html" %}
-{% load crispy_forms_tags %}
-{% load myfilters %}
+<div class="content-section">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      {{ r_form }}
+    </fieldset>
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit" name="button">Login</button>
+    </div>
+  </form>
+</div>
 
+<!-- {% load crispy_forms_tags %}
+{% load myfilters %} -->
+<!--
 {% block content %}
   <div class="content-section">
     <form method="POST">
@@ -69,4 +81,4 @@
       <a class="ml-2" href="{% url 'login'%}">Log in</a>
     </div>
   </div>
-{% endblock content %}
+{% endblock content %}  -->

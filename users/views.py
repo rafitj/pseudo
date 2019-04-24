@@ -24,7 +24,8 @@ def login_view(request):
             return redirect(request.META['HTTP_REFERER'])
 
         else:
-            messages.add_message(request, messages.WARNING, "Incorrect Login!")
+            messages.add_message(request, messages.WARNING,
+                                 "Incorrect Login!", extra_tags='login_error')
             return redirect(request.META['HTTP_REFERER'])
 
     return render(request, 'users/login.html', {'login_form': login_form})
@@ -56,6 +57,19 @@ def register(request):
                                     password=r_form.cleaned_data['password1'])
             login(request, new_user)
             return redirect('profile')
+        else:
+            username_errors = r_form['username'].errors
+            email_errors = r_form['email'].errors
+            password_errors = r_form['password2'].errors
+            if (username_errors):
+                messages.error(request, username_errors[0], extra_tags='username')
+            if (email_errors):
+                messages.error(request, email_errors[0], extra_tags='email')
+            if (password_errors):
+                messages.error(request, password_errors[0], extra_tags='password')
+
+            # messages.add_message(request, messages.WARNING, r_form.username.errors)
+            return redirect(request.META['HTTP_REFERER'])
 
     else:
         r_form = UserRegisterForm()

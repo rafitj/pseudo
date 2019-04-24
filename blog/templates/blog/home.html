@@ -4,36 +4,43 @@
 {% block content %}
 
 <div class="center-content">
-
-<div class="my_container">
-  <ul>
-
+<div class="container">
+  <div class="row ">
    {% for post in posts %}
-     <li class="block">
-       <a href="{% url 'post-detail' post.id %}"><img class= "post-img" src="{{ post.project_image.url }}" />
-         <span class="main-span">
-           <table class="main-table">
-             <tr>
-               <td><a class="post-anchor" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></td>
-               <td class="td-divide"> &nbsp | &nbsp </td>
-               <td>
-                 <table>
-                   <tr>
-                     <td class="td-author"><a class="post-anchor" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a></td>
-                   </tr>
-                   <tr>
-                     <td class="td-summary">{{ post.summary }}</td>
-                   </tr>
-                 </table>
-               </td>
-             </tr>
-           </table>
-       </span>
-       </a>
-     </li>
-   {% endfor %}
+   <a href="{% url 'post-detail' post.id %}">
+         <div class="mt-4 col-4 post">
+           <div class="post_state"></div>
+           <div class="post_body p-3 mr-1 ml-1">
+             <a class="post-anchor" href="{% url 'user-posts' post.author.username %}">
+               <div class="post_author m-1">
+                 {{ post.author }}
+               </div>
+             </a>
+             <div class="post_title p-2">
+               {{ post.title }}
+             </div>
+           </div>
+         <div class="pl-1 pr-1 mt-1 post_footer_info">
+          <div class="container">
+            <div class="row">
+              <div class="col-6 post_date">
+                {{post.date_posted|date:'F d, Y'}}
+              </div>
+              <div class="col-6 post_stats">
+                <i class="fas fa-comment"></i> 5 &nbsp;&nbsp;
+                <i class="fas fa-users"></i> 12 &nbsp;
+                <i class="fas fa-heart"></i> 50
 
- </ul>
+              </div>
+            </div>
+          </div>
+
+         </div>
+        </div>
+      </a>
+
+   {% endfor %}
+ </div>
 </div>
 </div>
 

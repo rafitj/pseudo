@@ -38,6 +38,7 @@
 
           <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-fire"></i> Discover </a>
           <a class="nav-item nav-anchor nav-link" href="{% url 'follow_users' %}"> <i class="fas fa-user-friends"></i> Follow </a>
+          <a class="nav-item nav-anchor nav-link" href="#"> <i class="fas fa-comment-dollar"></i> Hire </a>
           <a class="nav-item nav-anchor nav-link" href="{% url 'about' %}"> <i class="fas fa-question-circle"></i> About </a>
           <!-- <i class="fas fa-search"></i>  -->
 
@@ -300,15 +301,7 @@
 
 
 
-    <main role="main" class="home-container container">
-        <div class="col-md-12">
-          <!-- {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %} -->
+    <main role="main" class="home-container">
           {% block content %}{% endblock %}
     </main>
 

@@ -300,6 +300,62 @@
       </div>
 
 
+      {% for post in posts %}
+         <div class="modal fade" id={{post.id}} tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+           <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+             <div class="post_model_content modal-content">
+               <div class="logout-modal-header">
+                 <button type="button" class="close mr-1" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <div class="post-modal-body">
+                 <div class="container">
+                   <div class="row">
+
+                     <div class="post_modal_left col-1">
+                         <i class="fas fa-caret-left"></i>
+                     </div>
+                     <div class="post_modal_author col-3">
+                       <img class="rounded-circle" src="{{ post.author.profile.image.url }}" alt="">
+                       <h4 class="mt-2">{{post.author}}</h4>
+                      </div>
+
+                     <div class=" col-7">
+                       <h2 class="post_modal_title">{{post.title}}</h2>
+                       <div class="post_modal_summary">
+                         {{post.summary}}
+                       </div>
+                       <div class="post_modal_date">
+                         {{post.date_posted|date:'F d, Y'}}
+                       </div>
+                       <br>
+                       <div class="post_modal_stats_and_button">
+                         <div class="container">
+                           <div class="row">
+                             <div class="post_modal_stats col-6">
+                               <i class="fas fa-comment"></i> 5 &nbsp;&nbsp;
+                               <i class="fas fa-users"></i> 12 &nbsp;
+                               <i class="fas fa-heart"></i> 50
+                             </div>
+                             <div class="col-6">
+                               <button type="button" class="post_modal_join btn btn-secondary">Join</button>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                       
+                     </div>
+                     <div class=" post_modal_right col-1"> <i class="fas fa-caret-right"></i></div>
+
+                   </div>
+                 </div>
+               </div>
+               <div class="logout-modal-footer"></div>
+             </div>
+           </div>
+         </div>
+      {% endfor %}
 
     <main role="main" class="home-container">
           {% block content %}{% endblock %}
@@ -307,7 +363,43 @@
 
     <footer class="base_footer">
       <div class="footer_border"></div>
-      <div class="footer_body"></div>
+      <div class="footer_body">
+        <div class="container">
+          <div class="row">
+            <div class="footer_left mt-3 col-6">
+              <h1 class="mb-0">Pseudo</h1>
+              For creators, developers, designers. For you. <br>
+              <div class="mt-2 footer_social_media_icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-github"></i>
+              </div>
+            </div>
+            <div class="footer_right mt-4 col-6">
+              <div class="mb-2">
+                <div class="container">
+                  <div class="row">
+                    <div class="m-0 p-0 col-7"></div>
+                    <div class="m-0 p-0 col-2 door">
+                      <i class="fas mt-1 fa-door-open"></i> &nbsp;
+                    </div>
+                    <div class="footer_count pt-3 pr-3 col-3">
+                      <span class="exact_count">512</span>
+                      <br>
+                      <span class="mt-2">doors opened</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <small>© 2019 Pseudo. All rights reserved.</small>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     </footer>
 
 

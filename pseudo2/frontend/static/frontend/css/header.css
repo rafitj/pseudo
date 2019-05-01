@@ -1,0 +1,60 @@
+.navbar {
+  background: #202122;
+  height: 4rem;
+}
+
+.nav-item {
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+}
+.nav-item:hover{
+  opacity: 0.5;
+}
+.nav-logo {
+  width: 4.1rem;
+}
+.center-content{
+  text-align: center;
+}
+.nav-anchor {
+  font-family: 'Helvetica';
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.fas, .fab, .fa {
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav, .navbar, .navbar-expand-md, .navbar-dark {
+  text-align: center;
+  padding: 2rem 9rem;
+  box-shadow: 0px 0px 15px #131313;
+}
+
+.nav-logout-button{
+  border: none;
+}
+
+.dropdown-menu{
+  background: #202122;
+}
+
+
+.btn span{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn, .btn:active, .btn:focus, .btn:hover  {
+  background: #202122;
+  border: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+  -moz-outline-style: none;
+}

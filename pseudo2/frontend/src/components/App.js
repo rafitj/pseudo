@@ -6,13 +6,17 @@ import {Provider as AlertProvider} from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import store from '../store';
 import Header from './layout/Header';
-import Dashboard from './rooms/Dashboard';
+import Footer from './layout/Footer';
+
+import HomeDisplay from './layout/HomeDisplay';
+import Form from './rooms/Form';
+import Rooms from './rooms/Rooms';
+
 import Alerts from './layout/Alerts';
 import Register from './accounts/Register';
 import Login from './accounts/Login';
 import PrivateRoute from './common/PrivateRoute';
 import {loadUser} from '../actions/auth';
-import BannerImg from '../../static/frontend/assets/home_banner.png'
 
 const alertOptions = {
   timeout: 3000,
@@ -29,15 +33,17 @@ class App extends React.Component{
       <Router>
         <Fragment>
           <Header />
-          <img src ={BannerImg} alt="" />
+          <Route exact path='/' component = {HomeDisplay} />
           <div className = "container">
             <Alerts />
             <Switch>
-              <Route exact path='/' component = {Dashboard} />
+              <Route exact path='/' component = {Rooms} />
+              <Route exact path='/create-room' component = {Form} />
               <Route exact path='/register' component = {Register} />
               <Route exact path='/login' component = {Login} />
             </Switch>
           </div>
+          <Footer />
         </Fragment>
       </Router>
     );

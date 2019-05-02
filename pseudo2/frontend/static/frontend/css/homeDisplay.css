@@ -1,0 +1,33 @@
+.banner{
+  position: relative;
+}
+.banner-img{
+  width: 100vw;
+}
+.b_button {
+  position: absolute;
+  bottom: 9%;
+  left: 10%;
+  outline: none;
+  height: 18%;
+  text-align: center;
+  width: 15%;
+  border-radius: 40px;
+  background: #fff;
+  border: 2px solid white;
+  letter-spacing: 1px;
+  text-shadow: 0;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.b_button:hover {
+  transform: scale(1.05);
+}
+.button-txt{
+  font-size: 2vw;
+  background: -webkit-linear-gradient(#f5a658, #f07854);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

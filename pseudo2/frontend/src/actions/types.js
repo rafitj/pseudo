@@ -1,6 +1,7 @@
 export const GET_ROOMS = 'GET_ROOMS';
 export const DELETE_ROOM = 'DELETE_ROOM';
 export const ADD_ROOM = 'ADD_ROOM';
+export const LOADING_ROOMS = 'LOADING_ROOMS';
 
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";

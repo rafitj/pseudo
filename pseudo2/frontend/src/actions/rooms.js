@@ -1,9 +1,12 @@
 import axios from 'axios'
-import {GET_ERRORS, GET_ROOMS, DELETE_ROOM, ADD_ROOM} from './types'
+import {GET_ERRORS, GET_ROOMS, DELETE_ROOM, GET_NUM_ROOMS, ADD_ROOM, LOADING_ROOMS} from './types'
 import { createMessage, returnErrors } from "./messages";
 import {tokenConfig} from './auth';
+
 //GET rooms
 export const getRooms = () => (dispatch, getState) => {
+  dispatch({ type: LOADING_ROOMS });
+
   axios.get('/api/rooms/', tokenConfig(getState)).then(res => {
     dispatch({
       type: GET_ROOMS,

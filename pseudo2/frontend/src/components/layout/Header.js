@@ -6,20 +6,20 @@ import { logout } from '../../actions/auth';
 import PseudoLogo from '../../../static/frontend/assets/PseudoLogo.png';
 
 class Header extends React.Component{
+
   render(){
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <Fragment>
-        <strong></strong>
-          <div class="mt-1  dropdown">
-            <button class="nav-logout-button nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span><i class="fas mr-1 fa-caret-square-down"></i> Rooms </span>
+          <div className="mt-1  dropdown">
+            <button className="nav-logout-button nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span><i className="fas mr-1 fa-caret-square-down"></i> Rooms </span>
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <Link to = '/' className="nav-item nav-link" >
-                <i className="fas mr-1 fa-door-open"></i> Enter
+                <i className="fas mr-1 fa-door-closed"></i> Enter
               </Link>
-              <Link to = '/' className="nav-item nav-link" >
+              <Link to = '/create-room' className="nav-item nav-link" >
                   <i className="fas mr-1  fa-plus-circle"></i> Create
               </Link>
               <Link to = '/' className="nav-item nav-link" >
@@ -47,7 +47,7 @@ class Header extends React.Component{
     );
     return (
       <div>
-          <nav className="navbar navbar-expand-md navbar-dark" >
+          <nav className="navbar navbar-expand-md" >
               <Link to = '/login' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
               </Link>

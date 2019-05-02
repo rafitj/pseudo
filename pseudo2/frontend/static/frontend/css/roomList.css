@@ -1,16 +1,15 @@
-
-.post{
+.room{
   transition: all 0.4s ease;
   cursor: pointer;
 }
-.post:hover{
+.room:hover{
   transform: scale(1.05) translateY(-10px);
 }
-.post_body{
+.room_body{
   background: #d6d6d6;
   height: 30vh;
 }
-.post_state{
+.room_state{
   position: relative;
   top: 0.5rem;
   left: 0rem;
@@ -21,7 +20,7 @@
   border: 2px solid white;
 }
 
-.post_author{
+.room_author{
   color: #a0a0a0;
   font-size: 0.9rem;
   text-align: left;
@@ -29,28 +28,28 @@
   font-weight: lighter;
 }
 
-.post-anchor{
+.room-anchor{
   color: #a0a0a0;
   transition: all 0.25s ease;
 }
 
-.post-anchor:hover{
+.room-anchor:hover{
   color: #202122;
 }
 
-.post_title{
+.room_title{
   font-weight: lighter;
   color: #202122;
   font-size: 2rem;
 }
 
-.post_date{
+.room_date{
   color: #a0a0a0;
   font-size: 0.7rem;
   text-align: left;
 }
 
-.post_stats{
+.room_stats{
   color: #a0a0a0;
   font-size: 0.7rem;
   text-align: right;

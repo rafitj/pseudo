@@ -1,8 +1,7 @@
 .navbar {
   background: #202122;
-  height: 4rem;
+  height: 6rem;
 }
-
 .nav-item {
   background: -webkit-linear-gradient(#f07854, #f5a658);
   -webkit-background-clip: text;
@@ -29,7 +28,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-nav, .navbar, .navbar-expand-md, .navbar-dark {
+nav, .navbar, .navbar-expand-md {
   text-align: center;
   padding: 2rem 9rem;
   box-shadow: 0px 0px 15px #131313;

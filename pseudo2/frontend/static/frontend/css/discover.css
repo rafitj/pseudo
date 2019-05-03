@@ -1,0 +1,88 @@
+.discover_search{
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 2.5rem;
+  margin: 0 auto;
+  width: 100vw;
+  background-image: -webkit-linear-gradient(#f5a658, #f07854);
+  height: 10rem;
+  display: inline-block;
+}
+
+.discover_search button .fas {
+  background: -webkit-linear-gradient(#fff, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.discover_search button .fas:hover {
+  transform: rotate(360deg) scale(1.1);
+}
+
+.discover_search button {
+  border: none;
+  background: transparent;
+  color: transparent;
+  transform: translateX(-3.5rem);
+}
+
+.discover_search label .fas {
+  transform: scale(1.1);
+  background: -webkit-linear-gradient(#fff, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+
+.discover_search input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+
+.Search.is-Search-open .Search-input {
+  width: 40rem;
+  height: 5rem;
+  color: #fff;
+  margin-left: 0.5rem;
+}
+.Search.is-Search-open .Search-input ~ .Search-control {
+  z-index: 0;
+  cursor: pointer;
+}
+.Search.is-Search-open .Search-input ~ .Search-control::before {
+  transform: rotate(45deg);
+}
+.Search.is-Search-open .Search-input ~ .Search-control::after {
+  transform: rotate(-45deg) translateY(0);
+}
+
+.Search-input {
+  width: 55px;
+  height: 55px;
+  padding: 10px 15px;
+  border: 4px solid #fff;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.1);
+  color: transparent;
+  font-size: 2rem;
+  transition: 0.4s width ease, 0.4s color ease;
+}
+.Search-input:focus {
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+.discover_search input {
+  padding-left: 1.5rem;
+  padding-right: 3.2rem;
+}

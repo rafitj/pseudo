@@ -4,8 +4,9 @@ import { returnErrors } from "./messages";
 import {
   USER_LOADED,
   USER_LOADING,
+  USER_FETCHED,
   AUTH_ERROR,
-  LOGIN_SUCCESS, 
+  LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT_SUCCESS,
   REGISTER_SUCCESS,
@@ -18,7 +19,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("/api/user/auth", tokenConfig(getState))
+    .get("/api/user/load", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: USER_LOADED,
@@ -26,6 +27,7 @@ export const loadUser = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
+      console.log("got errored");
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR
@@ -94,7 +96,6 @@ export const logout = () => (dispatch, getState) => {
   axios
     .post("/api/user/logout/", null, tokenConfig(getState))
     .then(res => {
-      dispatch({ type: 'CLEAR_LEADS' });
       dispatch({
         type: LOGOUT_SUCCESS
       });

@@ -4,14 +4,14 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
 import BannerImg from '../../../static/frontend/assets/home_banner.png'
-import { getRooms } from '../../actions/rooms';
+import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
 import Slider from "react-slick";
 
 class HomeDisplay extends React.Component{
 
   componentDidMount() {
-    this.props.getRooms();
+    this.props.getRoomsAndCreator();
   }
 
   renderRooms(){
@@ -68,7 +68,7 @@ class HomeDisplay extends React.Component{
       infinite: true,
       speed: 500,
       slidesToShow: 3,
-      slidesToScroll: 2,
+      slidesToScroll: 1,
       centerMode: true,
       arrows: true,
       centerPadding: '60px',
@@ -106,4 +106,4 @@ const mapStateToProps = state => ({
   isLoading: state.rooms.isLoading
 });
 
-export default connect(mapStateToProps, {logout, getRooms})(HomeDisplay);
+export default connect(mapStateToProps, {logout, getRoomsAndCreator})(HomeDisplay);

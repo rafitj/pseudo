@@ -1,7 +1,6 @@
 .carousel_container{
   width: 100vw;
   background-image: -webkit-linear-gradient(#f5a658, #f07854);
-
   padding-bottom: 2.5rem;
 }
 .prev, .next {

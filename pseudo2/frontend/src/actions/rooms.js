@@ -1,13 +1,42 @@
 import axios from 'axios'
-import {GET_ERRORS, GET_ROOMS, DELETE_ROOM, GET_NUM_ROOMS, ADD_ROOM, LOADING_ROOMS} from './types'
+import {GET_ERRORS, GET_ROOMS, GET_ROOM_CREATOR, DELETE_ROOM, ADD_ROOM, FETCH_USER, LOADING_ROOMS} from './types'
 import { createMessage, returnErrors } from "./messages";
 import {tokenConfig} from './auth';
+import _ from 'lodash';
+
+export const getRoomsAndCreator =  () => {
+  return async (dispatch, getState) => {
+    await dispatch(getRooms());
+    const creators = _.uniq(_.map(getState().rooms, 'creator'))
+    creators.forEach(id => dispatch(fetchRoomCreator(id)));
+  }
+}
+
+
+export const fetchRoomCreator = (id) => (dispatch) => {
+  _fetchRoomCreator(id, dispatch);
+};
+
+const _fetchRoomCreator = _.memoize((id, dispatch) => {
+  axios
+    .get(`api/user/users/${id}`)
+    .then(res => {
+      dispatch({
+        type: FETCH_USER,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+        dispatch(returnErrors(err.response.data, err.response.status))
+      );
+});
+
 
 //GET rooms
 export const getRooms = () => (dispatch, getState) => {
-  dispatch({ type: LOADING_ROOMS });
-
-  axios.get('/api/rooms/', tokenConfig(getState)).then(res => {
+  axios
+  .get('/api/rooms/', tokenConfig(getState))
+  .then(res => {
     dispatch({
       type: GET_ROOMS,
       payload: res.data

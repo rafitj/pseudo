@@ -51,10 +51,10 @@ class Header extends React.Component{
               <Link to = '/login' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
               </Link>
-              <a className="nav-item nav-anchor nav-link" href="#"> <i className="fas mr-1 fa-fire"></i> Discover </a>
-              <a className="nav-item nav-anchor nav-link" href="#"> <i className="fas mr-1 fa-user-friends"></i> Follow </a>
-              <a className="nav-item nav-anchor nav-link" href="#"> <i className="fas mr-1 fa-comment-dollar"></i> Hire </a>
-              <a className="nav-item nav-anchor nav-link" href="#"> <i className="fas mr-1 fa-question-circle"></i> About </a>
+              <Link className="nav-item nav-anchor nav-link" to="/discover"> <i className="fas mr-1 fa-fire"></i> Discover </Link>
+              <Link className="nav-item nav-anchor nav-link" to="/follow"> <i className="fas mr-1 fa-user-friends"></i> Follow </Link>
+              <Link className="nav-item nav-anchor nav-link" to="/"> <i className="fas mr-1 fa-comment-dollar"></i> Hire </Link>
+              <Link className="nav-item nav-anchor nav-link" to="/"> <i className="fas mr-1 fa-question-circle"></i> About </Link>
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span>

@@ -2,14 +2,14 @@ import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getRooms, deleteRoom } from '../../actions/rooms';
+import { getRoomsAndCreator, deleteRoom } from '../../actions/rooms';
 import _ from 'lodash';
 import AOS from 'aos';
 
 class Rooms extends React.Component{
 
   componentDidMount() {
-    this.props.getRooms();
+    this.props.getRoomsAndCreator();
     AOS.init({once: true});
   }
 
@@ -18,18 +18,21 @@ class Rooms extends React.Component{
       return <p>Loading</p>;
     }
     else {
+      var roomsLoaded = 0
       var numRooms = 0;
       return (
       this.props.rooms.map(room => {
+
         if (numRooms==2){numRooms=0;}
         var duration = (1000 + (numRooms++)*250);
+
         return(
           <div data-aos="fade-up" data-aos-duration={duration} key = {room.id} className="mt-4 col-4 room" >
             <div className="room_state"></div>
             <div className="room_body p-3 mr-1 ml-1">
                 <div className="room_author m-1">
                   <a className="room-anchor" href="#">
-                    Author
+                    "Anon"
                   </a>
                 </div>
               <div className="room_title p-2">
@@ -76,7 +79,8 @@ class Rooms extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  rooms: state.rooms.rooms
+  rooms: state.rooms.rooms,
+  users: state.users
 });
 
-export default connect(mapStateToProps,{getRooms, deleteRoom})(Rooms);
+export default connect(mapStateToProps,{getRoomsAndCreator, deleteRoom})(Rooms);

@@ -1,0 +1,121 @@
+
+.logout_button:active, .logout_button:focus, .login_button:active, .login_button:focus, .b_button:active, .b_button:focus  {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+  -moz-outline-style: none;
+}
+
+
+.login_icons{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+  margin-right: 0.4rem;
+}
+
+.signup-now:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+  .space{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .space{
+    display: none;
+  }
+  .navlistlast{
+    margin-bottom: 0.5rem;
+  }
+}
+
+.form-control{
+  display: inline;
+  width: 75%;
+  margin: 0.5rem 0.5rem;
+}
+
+.bottom-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+}
+.not-top-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+  margin-top: 0.8rem;
+}
+.top-form-control{
+  margin-bottom: 0.1rem;
+}
+
+.forgot_pass_div{
+  text-align: right;
+  padding: 0 10%;
+}
+
+
+.forgot_pass{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.forgot_pass:hover{
+  opacity: 0.5;
+}
+
+.login_button{
+  margin-top: 1rem;
+  background: #202122;
+  border-radius: 20px;
+  border: 2px solid #444 ;
+  width: 7rem;
+  height: 2.5rem;
+  transition: all 0.25s ease;
+}
+
+.login_button:hover{
+  cursor: pointer;
+  border: 2px solid #f07854 ;
+  box-shadow: 0px 0px 10px #181818;
+  transform: scale(1.1);
+}
+
+.login_button_text{
+  font-size: 1.3rem;
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+hr{
+  height: 1px;
+  color: #444;
+  background-color: #444;
+  margin-bottom: 0.5rem;
+  width: 80%;
+  outline-color: #444;
+}
+
+.muted_text{
+  color: #444;
+}
+
+.or_connect_with{
+  margin-top: 1rem;
+}
+
+.login_error_icon{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

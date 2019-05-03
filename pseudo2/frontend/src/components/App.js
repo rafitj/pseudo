@@ -18,6 +18,9 @@ import Login from './accounts/Login';
 import PrivateRoute from './common/PrivateRoute';
 import {loadUser} from '../actions/auth';
 
+import Discover from './features/Discover';
+import Follow from './features/Follow';
+
 const alertOptions = {
   timeout: 3000,
   position: 'top center'
@@ -34,6 +37,8 @@ class App extends React.Component{
         <Fragment>
           <Header />
           <Route exact path='/' component = {HomeDisplay} />
+          <Route exact path='/discover' component = {Discover} />
+          <Route exact path='/follow' component = {Follow} />
           <div className = "container">
             <Alerts />
             <Switch>

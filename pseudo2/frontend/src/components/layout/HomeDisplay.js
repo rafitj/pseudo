@@ -7,6 +7,8 @@ import BannerImg from '../../../static/frontend/assets/home_banner.png'
 import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
 import Slider from "react-slick";
+import Rooms from '../rooms/Rooms';
+import UserHeader from '../common/UserHeader';
 
 class HomeDisplay extends React.Component{
 
@@ -33,7 +35,7 @@ class HomeDisplay extends React.Component{
             <div className="rec_room_body p-3 mr-1 ml-1">
                 <div className="rec_room_author m-1">
                   <a className="rec_room-anchor" href="#">
-                    Author
+                    <UserHeader userId={room.creator}/>
                   </a>
                 </div>
               <div className="rec_room_title p-2">
@@ -95,6 +97,7 @@ class HomeDisplay extends React.Component{
     return (
       <Fragment>
         {isAuthenticated ? displayRecentRooms : displayBanner }
+        <Rooms query=""/>
       </Fragment>
     );
   }

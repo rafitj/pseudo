@@ -17,7 +17,6 @@ import {
 export const loadUser = () => (dispatch, getState) => {
   // User Loading
   dispatch({ type: USER_LOADING });
-
   axios
     .get("/api/user/load", tokenConfig(getState))
     .then(res => {
@@ -27,12 +26,12 @@ export const loadUser = () => (dispatch, getState) => {
       });
     })
     .catch(err => {
-      console.log("got errored");
       dispatch(returnErrors(err.response.data, err.response.status));
       dispatch({
         type: AUTH_ERROR
       });
     });
+    console.log("User Loaded");
 };
 
 // LOGIN USER

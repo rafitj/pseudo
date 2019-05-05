@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getRoomsAndCreator, deleteRoom } from '../../actions/rooms';
+import UserHeader from '../common/UserHeader';
 import _ from 'lodash';
 import AOS from 'aos';
 
@@ -13,16 +14,33 @@ class Rooms extends React.Component{
     AOS.init({once: true});
   }
 
+  room_filter(rooms){
+    const {query} = this.props;
+    const refined_query = (query.toLowerCase()).replace(/ +(?= )/g,'');
+    if (query!== "") {
+      return rooms.filter(room => (
+        ((room.title).toLowerCase()).includes(refined_query)
+        ||
+        ((room.summary).toLowerCase()).includes(refined_query)
+      )
+      );
+    }
+    else {
+      return rooms;
+    }
+
+
+  }
+
   renderRooms(){
     if (_.isEmpty(this.props.rooms)){
       return <p>Loading</p>;
     }
     else {
-      var roomsLoaded = 0
       var numRooms = 0;
+      const filtered_rooms = this.room_filter(this.props.rooms);
       return (
-      this.props.rooms.map(room => {
-
+      filtered_rooms.map(room => {
         if (numRooms==2){numRooms=0;}
         var duration = (1000 + (numRooms++)*250);
 
@@ -32,7 +50,7 @@ class Rooms extends React.Component{
             <div className="room_body p-3 mr-1 ml-1">
                 <div className="room_author m-1">
                   <a className="room-anchor" href="#">
-                    "Anon"
+                    <UserHeader userId = {room.creator}/>
                   </a>
                 </div>
               <div className="room_title p-2">
@@ -79,8 +97,7 @@ class Rooms extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  rooms: state.rooms.rooms,
-  users: state.users
+  rooms: state.rooms.rooms
 });
 
 export default connect(mapStateToProps,{getRoomsAndCreator, deleteRoom})(Rooms);

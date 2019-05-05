@@ -21,6 +21,8 @@ import {loadUser} from '../actions/auth';
 import Discover from './features/Discover';
 import Follow from './features/Follow';
 
+import ProfileBase from './profiles/ProfileBase';
+
 const alertOptions = {
   timeout: 3000,
   position: 'top center'
@@ -42,10 +44,10 @@ class App extends React.Component{
           <div className = "container">
             <Alerts />
             <Switch>
-              <Route exact path='/' component = {Rooms} />
               <Route exact path='/create-room' component = {Form} />
               <Route exact path='/register' component = {Register} />
               <Route exact path='/login' component = {Login} />
+              <Route exact path='/profile' component = {ProfileBase} />
             </Switch>
           </div>
           <Footer />

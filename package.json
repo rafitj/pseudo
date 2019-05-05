@@ -29,6 +29,7 @@
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/runtime": "^7.4.4",
+    "@tinymce/tinymce-react": "^3.0.1",
     "aos": "^2.3.4",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",

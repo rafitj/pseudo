@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'knox',
     'rooms',
     'frontend',
-    'users'
+    'users',
+    'profiles',
+    'multiselectfield'
 ]
 
 REST_FRAMEWORK = {
@@ -78,6 +80,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pseudo2.wsgi.application'
 
+VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
+    'profile_image_renditions': [
+        ('full_size', 'url'),
+        ('thumbnail', 'thumbnail__100x100'),
+        ('medium_square_crop', 'crop__400x400'),
+        ('small_square_crop', 'crop__50x50')
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -127,3 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

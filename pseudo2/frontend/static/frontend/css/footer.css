@@ -46,7 +46,7 @@
 .door{
   text-align: right;
 }
-.fa-door-open{
+.base_footer .fa-door-open{
   font-size: 3.5rem;
   transition: all 0.3s ease;
 }

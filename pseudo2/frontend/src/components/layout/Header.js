@@ -13,7 +13,7 @@ class Header extends React.Component{
       <Fragment>
           <div className="mt-1  dropdown">
             <button className="nav-logout-button nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span><i className="fas mr-1 fa-caret-square-down"></i> Rooms </span>
+              <span className = "span_class"><i className="fas mr-1 fa-caret-square-down"></i> Rooms </span>
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <Link to = '/' className="nav-item nav-link" >
@@ -27,7 +27,7 @@ class Header extends React.Component{
               </Link>
             </div>
           </div>
-        <Link to = '/' className="mt-1 nav-item nav-link" >
+        <Link to = '/profile' className="mt-1 nav-item nav-link" >
           <i className="fas fa-user mr-1"></i> {user ? `${user.username}'s Profile` : ""}
         </Link>
         <button onClick = {this.props.logout} className="mt-1 nav-logout-button navlistlast nav-item nav-link">
@@ -57,7 +57,7 @@ class Header extends React.Component{
               <Link className="nav-item nav-anchor nav-link" to="/"> <i className="fas mr-1 fa-question-circle"></i> About </Link>
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span>
+                <span className="span_class">
                   <i className="fas fa-bars"></i>
                 </span>
               </button>

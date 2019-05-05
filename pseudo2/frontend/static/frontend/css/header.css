@@ -1,3 +1,4 @@
+
 .navbar {
   background: #202122;
   height: 6rem;
@@ -22,7 +23,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.fas, .fab, .fa {
+nav .fas, nav .fab, nav .fa {
   background: -webkit-linear-gradient(#f07854, #f5a658);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -43,7 +44,7 @@ nav, .navbar, .navbar-expand-md {
 }
 
 
-.btn span{
+.btn .span_class{
   background: -webkit-linear-gradient(#f07854, #f5a658);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import { social_login } from "../../actions/socialauth";
 import Modal from '../common/Modal';
 import history from '../common/history';
 
@@ -14,6 +15,7 @@ export class Login extends Component {
   renderContent(){
     const { username, password } = this.state;
     return (
+    <Fragment>
       <form onSubmit={this.onSubmit}>
         <div className="form-group">
           <label>Username</label>
@@ -44,6 +46,8 @@ export class Login extends Component {
           Don't have an account? <Link to="/register">Register</Link>
         </p>
       </form>
+      <button onClick={this.props.social_login}>Twitter</button>
+      </Fragment>
     );
   }
 
@@ -66,4 +70,4 @@ export class Login extends Component {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
-export default connect(mapStateToProps,{ login })(Login);
+export default connect(mapStateToProps,{ social_login, login })(Login);

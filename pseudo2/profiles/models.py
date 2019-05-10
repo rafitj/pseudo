@@ -11,24 +11,24 @@ def profile_pic_hashed(instance, filename):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    bio = models.CharField(max_length=100, default='Profile Bio')
+    bio = models.CharField(max_length=150, default='Profile Bio')
     title = models.CharField(max_length=50, default='Profile Title')
-    description = models.TextField(max_length=300, default='Profile Description')
     github = models.URLField(default='')
     website = models.URLField(default='')
-    profile_image = VersatileImageField(default='default.png', upload_to='profile_pic_hashed')
-    skills = models.CharField(max_length=40, default='')
+    profile_image = VersatileImageField(
+        default='profile_pic_hashed/default_profile_image.jpg', upload_to='profile_pic_hashed')
+    skills = models.CharField(max_length=200, default='')
 
     def __str__(self):
         return str(self.user.username) + 'Profile'
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = Image.open(self.profile_image.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.profile_image.path)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = Image.open(self.profile_image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.profile_image.path)
 
 
 # class Follower(models.Model):

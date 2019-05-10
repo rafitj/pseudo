@@ -7,11 +7,23 @@ class UserHeader extends React.Component{
     if (!user){
       return null;
     }
-    return (
-      <div className = "header">
-        { user.username }
-      </div>
-    );
+    if (this.props.userProperty === "username"){
+      return (
+        <div className = "header">
+          { user.username }
+        </div>
+      );
+    }
+    else if (this.props.userProperty === "email"){
+      return (
+        <div className = "header">
+          { user.email }
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
   }
 }
 

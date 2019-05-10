@@ -2,10 +2,13 @@ export const GET_ROOMS = 'GET_ROOMS';
 export const DELETE_ROOM = 'DELETE_ROOM';
 export const ADD_ROOM = 'ADD_ROOM';
 export const LOADING_ROOMS = 'LOADING_ROOMS';
+export const GET_ROOM = 'GET_ROOM';
+export const EDIT_ROOM = 'EDIT_ROOM';
 
 export const FETCH_USER = 'FETCH_USER';
 
 export const GET_PROFILES = 'GET_PROFILES';
+export const EDIT_PROFILE = 'EDIT_PROFILE';
 
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";

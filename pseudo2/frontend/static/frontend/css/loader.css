@@ -1,0 +1,56 @@
+@-webkit-keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+body {
+  background-color: #444;
+  color: white;
+  font-family: "Andale Mono", Monospace;
+  font-size: 24px;
+  font-weight: 100;
+  padding: 40px;
+}
+
+p {
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-string {
+  color: #C2C77B;
+}
+
+.text-class {
+  color: #F4CF84;
+}
+
+.text-method {
+  color: #669FBA;
+}
+
+.text-reserved-identifier {
+  color: #C0A7C7;
+}
+
+.text-orange {
+  color: #D6813E;
+}
+
+.text-this {
+  color: #D77C76;
+}
+
+.text-reserved-method {
+  color: #95C2B5;
+}
+
+.cursor {
+  animation: blink 0.5s step-end infinite alternate;
+  border-right: 1px solid white;
+}

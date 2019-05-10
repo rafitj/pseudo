@@ -1,5 +1,6 @@
 from rest_framework import serializers, fields
 from rooms.models import Room
+from versatileimagefield.serializers import VersatileImageFieldSerializer
 
 
 class RoomSerializer(serializers.ModelSerializer):
@@ -17,6 +18,9 @@ class RoomSerializer(serializers.ModelSerializer):
             ('C', 'Casual'),
             ('AC', 'Academic'),
             ('O', 'Other')
+        )
+        room_image = VersatileImageFieldSerializer(
+            sizes='room_image_renditions'
         )
         categories = fields.MultipleChoiceField(choices=category_categories)
         creator = serializers.ReadOnlyField(source='creator.username')

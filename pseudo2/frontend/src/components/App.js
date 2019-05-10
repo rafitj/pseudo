@@ -11,6 +11,8 @@ import Footer from './layout/Footer';
 import HomeDisplay from './layout/HomeDisplay';
 import Form from './rooms/Form';
 import Rooms from './rooms/Rooms';
+import RoomModal from './rooms/RoomModal';
+import MyRooms from './rooms/MyRooms';
 
 import Alerts from './layout/Alerts';
 import Register from './accounts/Register';
@@ -38,12 +40,17 @@ class App extends React.Component{
       <Router>
         <Fragment>
           <Header />
+          <Route  path='/' component = {RoomModal} />
           <Route exact path='/' component = {HomeDisplay} />
           <Route exact path='/discover' component = {Discover} />
           <Route exact path='/follow' component = {Follow} />
           <div className = "container">
             <Alerts />
             <Switch>
+              <Route exact path='/my-rooms' component = {MyRooms} />
+              <Route  name="edit-room" path="/edit-room/:roomId" render={(routeProps) => (
+                    <Form {...routeProps} formMode="edit" />
+                  )}  />
               <Route exact path='/create-room' component = {Form} />
               <Route exact path='/register' component = {Register} />
               <Route exact path='/login' component = {Login} />

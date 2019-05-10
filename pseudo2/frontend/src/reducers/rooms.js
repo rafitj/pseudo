@@ -1,7 +1,8 @@
-import { GET_ROOMS, DELETE_ROOM, ADD_ROOM, LOADING_ROOMS } from '../actions/types.js'
+import { EDIT_ROOM, GET_ROOMS, GET_ROOM, DELETE_ROOM, ADD_ROOM, LOADING_ROOMS } from '../actions/types.js'
 
 const initialState = {
   rooms: [],
+  room: null,
   total_rooms: 0,
   isLoading: false
 }
@@ -12,6 +13,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: true,
+      };
+    case GET_ROOM:
+      return {
+        ...state,
+        room: action.payload
       };
     case GET_ROOMS:
       return {
@@ -32,6 +38,11 @@ export default function (state = initialState, action) {
         ...state,
         total_rooms: (state.total_rooms + 1),
         isLoading: false,
+        rooms: [...state.rooms, action.payload]
+      };
+    case EDIT_ROOM:
+      return {
+        ...state,
         rooms: [...state.rooms, action.payload]
       };
     default:

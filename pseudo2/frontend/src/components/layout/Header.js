@@ -4,10 +4,15 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
 import PseudoLogo from '../../../static/frontend/assets/PseudoLogo.png';
+import LoginModal from '../accounts/LoginModal';
 
 class Header extends React.Component{
-
+  constructor(props) {
+    super(props)
+    this.state = { modalShow: false};
+  }
   render(){
+    let modalClose = () => this.setState({ modalShow: false });
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <Fragment>
@@ -22,7 +27,7 @@ class Header extends React.Component{
               <Link to = '/create-room' className="nav-item nav-link" >
                   <i className="fas mr-1  fa-plus-circle"></i> Create
               </Link>
-              <Link to = '/' className="nav-item nav-link" >
+              <Link to = '/my-rooms' className="nav-item nav-link" >
                   <i className="fas mr-1 fa-folder"></i> My Rooms
               </Link>
             </div>
@@ -37,18 +42,22 @@ class Header extends React.Component{
     );
     const guestLinks = (
       <Fragment>
-        <Link to = '/login' className="nav-item nav-link show-login">
-          <i className="fas fa-sign-in-alt"></i> Login
+        <Link to = "/login" className="nav-item nav-link show-login">
+            <i className="fas fa-sign-in-alt"></i> Login
         </Link>
         <Link to = '/register' className="navlistlast nav-item nav-link">
            <i className="fas fa-sign-in-alt"></i> Register
          </Link>
       </Fragment>
     );
+    const modal_click = () => {
+      this.setState({ modalShow: true});
+    }
     return (
-      <div>
+
+      <Fragment>
           <nav className="navbar navbar-expand-md" >
-              <Link to = '/login' className="nav-item nav-link" >
+              <Link to = '/' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
               </Link>
               <Link className="nav-item nav-anchor nav-link" to="/discover"> <i className="fas mr-1 fa-fire"></i> Discover </Link>
@@ -71,7 +80,7 @@ class Header extends React.Component{
                 </div>
               </div>
           </nav>
-      </div>
+      </Fragment>
     );
   }
 }

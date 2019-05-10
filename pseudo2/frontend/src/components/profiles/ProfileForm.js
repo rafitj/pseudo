@@ -5,19 +5,14 @@ import PropTypes from 'prop-types'
 import {addRoom,editRoom} from '../../actions/rooms'
 import { Editor } from '@tinymce/tinymce-react';
 
-
-class Form extends React.Component{
+class ProfileForm extends React.Component{
   state = {
     title : '',
-    summary: '',
-    content: '',
-    security: 'Public',
-    type: 'Question',
-    tags: '',
-    room_image: '',
-    categories: ['O'],
-    form_title: 'Create Room',
-    form_submit: 'Create My Room!'
+    bio: '',
+    github: '',
+    website: 'Public',
+    profile_image: 'Question',
+    skills: ''
   }
   componentDidMount() {
     if(this.props.formMode === "edit"){
@@ -254,4 +249,4 @@ class Form extends React.Component{
   }
 }
 
-export default connect(null, {addRoom,editRoom})(Form);
+export default connect(null, {editProfile})(ProfileForm);

@@ -19,6 +19,6 @@ class Search extends React.Component{
       </Fragment>
     );
   }
-}
+} 
 
 export default Search;

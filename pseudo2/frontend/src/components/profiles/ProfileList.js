@@ -32,7 +32,7 @@ class ProfileList extends React.Component{
                 </div>
                 <div className = "col-7 profile_info_container">
                   <div className="profile_info_sub_container">
-                  <div className="profile_username "><UserHeader userId = {profile.user}/></div>
+                  <div className="profile_username "><UserHeader userProperty="username" userId = {profile.user}/></div>
                   <div className="profile_subtitle mb-1">{profile.title}</div>
                   <div className="profile_stats mb-1">
                     <i className="fas fa-star"></i> 5   <i className="ml-2 fas fa-door-open"></i> 5

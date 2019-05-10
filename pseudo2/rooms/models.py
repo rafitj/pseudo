@@ -2,6 +2,13 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
+import uuid
+from PIL import Image
+from versatileimagefield.fields import VersatileImageField
+
+
+def room_pic_hashed(instance, filename):
+    return "{}.{}".format(uuid.uuid4(), filename.split(".")[-1])
 
 
 class Room(models.Model):
@@ -46,3 +53,13 @@ class Room(models.Model):
     members = models.PositiveIntegerField(default=0)
     likes = models.PositiveIntegerField(default=0)
     archived = models.BooleanField(default=False)
+    room_image = VersatileImageField(
+        default='room_pic_hashed/default_room_image.jpg', upload_to='room_pic_hashed')
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = Image.open(self.room_image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.room_image.path)

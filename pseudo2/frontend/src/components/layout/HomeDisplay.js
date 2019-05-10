@@ -8,6 +8,8 @@ import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
 import Slider from "react-slick";
 import Rooms from '../rooms/Rooms';
+import RoomModal from '../rooms/RoomModal';
+
 import UserHeader from '../common/UserHeader';
 
 class HomeDisplay extends React.Component{
@@ -97,6 +99,7 @@ class HomeDisplay extends React.Component{
     return (
       <Fragment>
         {isAuthenticated ? displayRecentRooms : displayBanner }
+        <RoomModal />
         <Rooms query=""/>
       </Fragment>
     );

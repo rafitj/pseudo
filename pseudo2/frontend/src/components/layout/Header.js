@@ -42,9 +42,11 @@ class Header extends React.Component{
     );
     const guestLinks = (
       <Fragment>
-        <Link to = "/login" className="nav-item nav-link show-login">
+        <div onClick = {modal_click} className="nav-item nav-link show-login">
+
             <i className="fas fa-sign-in-alt"></i> Login
-        </Link>
+
+        </div>
         <Link to = '/register' className="navlistlast nav-item nav-link">
            <i className="fas fa-sign-in-alt"></i> Register
          </Link>
@@ -56,6 +58,7 @@ class Header extends React.Component{
     return (
 
       <Fragment>
+          <LoginModal show={this.state.modalShow} onHide={modalClose}/>
           <nav className="navbar navbar-expand-md" >
               <Link to = '/' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />

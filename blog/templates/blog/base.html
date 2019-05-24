@@ -29,7 +29,7 @@
   </head>
   <body>
     <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" >
+      <nav class="navbar navbar-expand-md " >
         <div class="container">
 
           <a class="nav-item nav-link" href="{% url 'blog-home' %}">
@@ -136,7 +136,7 @@
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <div class="sm-form">
-                  <i class="fas fa-user prefix"></i>
+                  <label for="id_username"><i class="fas fa-user prefix"></i></label>
                    <input placeholder="Username" onkeyup='saveValue(this);' id="id_username"  class="form-control validate " type="text" name="username" maxlength="30" />
                   {% for message in messages %}
                     {% if "login_error" in message.tags %}
@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="sm-form">
-                  <i class="fas fa-lock prefix"></i>
+                  <label for="id_password"><i class="fas fa-lock prefix"></i></label>
                   <input placeholder="Password" onkeyup='saveValue(this);' type="password" class="bottom-form-control form-control validate " name="password" id="id_password" />
                   {% for message in messages %}
                     {% if "login_error" in message.tags %}
@@ -161,7 +161,6 @@
                 <button type="submit" onclick= "loginError()" class="login_button" name="button"><span class="login_button_text">Login</span></button>
                 <!-- <input type="hidden" name="next" value="{{ request.get_full_path }}" /> -->
             </form>
-
 
 
               <div class="or_connect_with">
@@ -210,7 +209,7 @@
                     {% csrf_token %}
 
                     <div class="sm-form">
-                      <i class="fas fa-user prefix"></i>
+                      <label for="id_username2"><i class="fas fa-user prefix"></i></label>
                        <input placeholder="Username" onkeyup='saveValue(this);' id="id_username2"  class="top-form-control form-control validate " type="text" name="username" maxlength="30" />
                        {% for message in messages|slice:":1" %}
                           {%if "username" in message.tags %}
@@ -230,7 +229,7 @@
                     </div>
 
                     <div class="sm-form">
-                      <i class="fas fa-envelope"></i>
+                      <label for="id_email"><i class="fas fa-envelope"></i></label>
                       <input placeholder="Email" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="email" id="id_email" />
                       {%for message in messages|slice:":1" %}
                          {%if "email" in message.tags %}
@@ -243,7 +242,7 @@
                     </div>
 
                     <div class="sm-form">
-                      <i class="fas fa-lock prefix"></i>
+                      <label for="id_password1"><i class="fas fa-lock prefix"></i></label>
                       <input placeholder="Password" type="password" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="password1" id="id_password1" />
                       {%for message in messages|slice:":1" %}
                          {%if "password" in message.tags %}
@@ -253,7 +252,7 @@
                     </div>
 
                     <div class="sm-form">
-                      <i class="fas fa-lock prefix"></i>
+                      <label for="id_password2"><i class="fas fa-lock prefix"></i></label>
                       <input placeholder="Verify Password" type="password" onkeyup='saveValue(this);' class="not-top-form-control form-control validate " name="password2" id="id_password2" />
                       {% for message in messages|slice:":1" %}
                          {%if "password" in message.tags %}
@@ -344,7 +343,7 @@
                            </div>
                          </div>
                        </div>
-                       
+
                      </div>
                      <div class=" post_modal_right col-1"> <i class="fas fa-caret-right"></i></div>
 

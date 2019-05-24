@@ -12,40 +12,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
     title = models.CharField(max_length=40)
     summary = models.CharField(max_length=300, default='Summarize me!')
+    security = models.CharField(max_length=300, default='Public')
     content = models.TextField()
     date_posted = models.DateTimeField(default=datetime.now, blank=True)
-    likes = models.PositiveIntegerField(default=1)
-    WEB = 'WE'
-    DESIGN = 'DE'
-    CODECHALLENGE = 'CC'
-    DATABASE = 'DB'
-    TESTING = 'TT'
-    MOBILE = 'MB'
-    GAMEDEV = 'GD'
-    IT = 'IT'
-    ART = 'AR'
-    ENTERTAINMENT = 'EN'
-    GAMING = 'GA'
-    ACADEMIC = 'AC'
-    LIFESTYLE = 'LY'
-    BUSINESS = 'BU'
-    categories = (
-        (DESIGN, 'Design (UI/UX)'),
-        (CODECHALLENGE, 'Code Challenges'),
-        (DATABASE, 'Database'),
-        (TESTING, 'Software Testing'),
-        (WEB, 'Web Dev'),
-        (MOBILE, 'Mobile Dev'),
-        (GAMEDEV, 'Game Dev'),
-        (IT, 'Tech & IT'),
-        (ART, 'Art'),
-        (ENTERTAINMENT, 'Enteratinment'),
-        (GAMING, 'Gaming'),
-        (BUSINESS, 'Business'),
-        (ACADEMIC, 'Academic'),
-        (LIFESTYLE, 'Lifestyle'),
-    )
-    category = MultiSelectField(choices=categories)
+    likes = models.PositiveIntegerField(default=0)
+    users = models.PositiveIntegerField(default=1)
+
     project_image = models.ImageField(
         default='default_project_image.png', upload_to='project_pics')
 

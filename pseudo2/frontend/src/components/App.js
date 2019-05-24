@@ -52,8 +52,8 @@ class App extends React.Component{
                     <Form {...routeProps} formMode="edit" />
                   )}  />
               <Route exact path='/create-room' component = {Form} />
-              <Route exact path='/register' component = {Register} />
-              <Route exact path='/login' component = {Login} />
+              {/*<Route exact path='/register' component = {Register} />
+            <Route exact path='/login' component = {Login} />*/}
               <Route exact path='/profile' component = {ProfileBase} />
             </Switch>
           </div>

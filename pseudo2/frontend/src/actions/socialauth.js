@@ -11,6 +11,7 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL
 } from "./types";
+
 export const social_login = () => dispatch => {
   const config = {
     client_id: "2007426045971320",

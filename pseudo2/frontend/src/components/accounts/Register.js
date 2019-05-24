@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -37,12 +37,10 @@ export class Register extends Component {
     }
     const { username, email, password, password2 } = this.state;
     return (
-      <div className="col-md-6 m-auto">
-        <div className="card card-body mt-5">
-          <h2 className="text-center">Register</h2>
+      <Fragment>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label>Username</label>
+              <label htmlFor="username"><i className="fas fa-user prefix"></i></label>
               <input
                 type="text"
                 className="form-control"
@@ -52,7 +50,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Email</label>
+              <label htmlFor="email"><i className="fas fa-envelope"></i></label>
               <input
                 type="email"
                 className="form-control"
@@ -62,7 +60,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label htmlFor="password"><i className="fas fa-lock prefix"></i></label>
               <input
                 type="password"
                 className="form-control"
@@ -72,7 +70,7 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <label>Confirm Password</label>
+              <label htmlFor="password2"><i className="fas fa-lock prefix"></i></label>
               <input
                 type="password"
                 className="form-control"
@@ -82,16 +80,12 @@ export class Register extends Component {
               />
             </div>
             <div className="form-group">
-              <button type="submit" className="btn btn-primary">
-                Register
+              <button type="submit" className="login_button">
+                <span class="login_button_text">Sign-Up</span>
               </button>
             </div>
-            <p>
-              Already have an account? <Link to="/login">Login</Link>
-            </p>
           </form>
-        </div>
-      </div>
+      </Fragment>
     );
   }
 }

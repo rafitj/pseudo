@@ -2,7 +2,6 @@ import React, { Component, Fragment} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
-import { social_login } from "../../actions/socialauth";
 import Modal from '../common/Modal';
 import history from '../common/history';
 
@@ -16,9 +15,9 @@ export class Login extends Component {
     const { username, password } = this.state;
     return (
     <Fragment>
-      <form onSubmit={this.onSubmit}>
+      <form className = "login-form" onSubmit={this.onSubmit}>
         <div className="form-group">
-          <label>Username</label>
+          <label htmlFor="username"><i class="fas fa-user prefix"></i></label>
           <input
             type="text"
             className="form-control"
@@ -28,7 +27,7 @@ export class Login extends Component {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label htmlFor="password"><i class="fas fa-lock prefix"></i></label>
           <input
             type="password"
             className="form-control"
@@ -37,16 +36,17 @@ export class Login extends Component {
             value={password}
           />
         </div>
+        <div class="forgot_pass_div">
+            <small>
+              <a class="forgot_pass" href="#">Forgot your password?</a>
+            </small>
+        </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary">
-            Login
+          <button type="submit" className="login_button">
+            <span class="login_button_text">Login</span>
           </button>
         </div>
-        <p>
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
       </form>
-      <button onClick={this.props.social_login}>Twitter</button>
       </Fragment>
     );
   }
@@ -70,4 +70,4 @@ export class Login extends Component {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
-export default connect(mapStateToProps,{ social_login, login })(Login);
+export default connect(mapStateToProps,{ login })(Login);

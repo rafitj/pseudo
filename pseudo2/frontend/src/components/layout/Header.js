@@ -5,14 +5,16 @@ import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
 import PseudoLogo from '../../../static/frontend/assets/PseudoLogo.png';
 import LoginModal from '../accounts/LoginModal';
+import RegisterModal from '../accounts/RegisterModal';
 
 class Header extends React.Component{
   constructor(props) {
     super(props)
-    this.state = { modalShow: false};
+    this.state = { loginModalShow: false, registerModalShow: false, };
   }
   render(){
-    let modalClose = () => this.setState({ modalShow: false });
+    let loginModalClose = () => this.setState({ loginModalShow: false });
+    let registerModalClose = () => this.setState({ registerModalShow: false });
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <Fragment>
@@ -40,25 +42,27 @@ class Header extends React.Component{
         </button>
       </Fragment>
     );
+    const login_modal_click = () => {
+        this.setState({ loginModalShow: true});
+    }
+    const register_modal_click = () => {
+        this.setState({ registerModalShow: true});
+    }
+
     const guestLinks = (
       <Fragment>
-        <div onClick = {modal_click} className="nav-item nav-link show-login">
-
+        <div onClick = {login_modal_click} className="nav-item nav-link show-login">
             <i className="fas fa-sign-in-alt"></i> Login
-
         </div>
-        <Link to = '/register' className="navlistlast nav-item nav-link">
+        <div onClick = {register_modal_click}  className="navlistlast nav-item nav-link">
            <i className="fas fa-sign-in-alt"></i> Register
-         </Link>
+         </div>
       </Fragment>
     );
-    const modal_click = () => {
-      this.setState({ modalShow: true});
-    }
     return (
-
       <Fragment>
-          <LoginModal show={this.state.modalShow} onHide={modalClose}/>
+          <LoginModal show={this.state.loginModalShow} onHide={loginModalClose}/>
+          <RegisterModal show={this.state.registerModalShow} onHide={registerModalClose}/>
           <nav className="navbar navbar-expand-md" >
               <Link to = '/' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />

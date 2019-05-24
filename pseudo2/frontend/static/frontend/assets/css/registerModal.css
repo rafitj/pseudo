@@ -1,0 +1,201 @@
+.register-form{
+	text-align: center;
+}
+.register-modal-title{
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: -webkit-linear-gradient(#f5a658, #f07854);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.register-modal-header{
+  background-image: linear-gradient(90deg, #f5a658, #f07854);
+  height: 1.4rem;
+}
+
+.register-modal-footer{
+  background-image: linear-gradient(90deg, #f5a658, #f07854);
+  height: 1.1rem;
+}
+
+
+.register_button:active, .register_button:focus  {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+  -moz-outline-style: none;
+}
+
+
+.register_icons{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+  margin-right: 0.4rem;
+}
+
+.login-now{
+	background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.login-now:hover{
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+  .space{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .space{
+    display: none;
+  }
+  .navlistlast{
+    margin-bottom: 0.5rem;
+  }
+}
+
+.register-modal-body .form-control{
+  display: inline;
+  width: 75%;
+  margin: 0.5rem 0.5rem;
+}
+
+.register-modal-body{
+  padding: 3rem 4rem;
+  background: #202122;
+  height: 40rem;
+  text-align: center;
+  margin-bottom: -1px;
+  margin-top: -1px;
+}
+
+.bottom-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+}
+.not-top-form-control{
+  display: inline;
+  width: 75%;
+  margin-bottom: 0.1rem;
+  margin-top: 0.8rem;
+}
+.top-form-control{
+  margin-bottom: 0.1rem;
+}
+
+.forgot_pass_div{
+  text-align: right;
+  padding: 0 10%;
+}
+
+.forgot_pass{
+	background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.25s ease;
+}
+
+.forgot_pass:hover{
+  opacity: 0.5;
+}
+
+.register_button{
+  margin-top: 1rem;
+  background: #202122;
+  border-radius: 20px;
+  border: 2px solid #444 ;
+  width: 7rem;
+  height: 2.5rem;
+  transition: all 0.25s ease;
+}
+
+.register_button:hover{
+  cursor: pointer;
+  border: 2px solid #f07854 ;
+  box-shadow: 0px 0px 10px #181818;
+  transform: scale(1.1);
+}
+
+.register_button_text{
+  font-size: 1.3rem;
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+hr{
+  height: 1px;
+  color: #444;
+  background-color: #444;
+  margin-bottom: 0.5rem;
+  width: 80%;
+  outline-color: #444;
+}
+
+.muted_text{
+  color: #444;
+}
+
+.or_connect_with{
+  margin-top: 1rem;
+}
+
+.register_error_icon{
+  background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-button {
+  margin: 0 0.4rem;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  display: block;
+  position: relative;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid #444;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 10;
+  font-size: 1.7rem;
+  color: #333;
+  transition: all 0.25s ease;
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+  border: 2px solid transparent;
+  background-image: linear-gradient(#202122, #202122), linear-gradient(90deg, #f5a658, #f07854);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+	color: #f07854;
+}
+
+.social-container {
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.social-container .fab{
+	background: -webkit-linear-gradient(#f07854, #f5a658);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.form-group .fas{
+	background: -webkit-linear-gradient(#f07854, #f5a658);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

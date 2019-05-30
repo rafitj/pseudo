@@ -9,6 +9,7 @@ export const FETCH_USER = 'FETCH_USER';
 
 export const GET_PROFILES = 'GET_PROFILES';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
+export const FETCH_PROFILE = 'GET_PROFILES';
 
 export const GET_ERRORS = "GET_ERRORS";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";

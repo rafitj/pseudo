@@ -1,17 +1,13 @@
 import React, {Fragment} from 'react';
-import ReactDOM from 'react-dom';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
 import BannerImg from '../../../static/frontend/assets/home_banner.png'
 import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
-import Slider from "react-slick";
 import Rooms from '../rooms/Rooms';
 import RoomModal from '../rooms/RoomModal';
-
+import Slider from "react-slick";
 import UserHeader from '../common/UserHeader';
-
 class HomeDisplay extends React.Component{
 
   componentDidMount() {
@@ -30,9 +26,9 @@ class HomeDisplay extends React.Component{
     }
     else {
       return (
-      this.props.rooms.map(room => {
+      this.props.rooms.slice(0, 3).map(room => {
         return(
-          <div key = {room.id} className=" ml-3 mr-3 rec_room" >
+          <div key = {room.id} className=" ml-3 mr-3 col-4 rec_room" >
             <div className="rec_room_state"></div>
             <div className="rec_room_body p-3 mr-1 ml-1">
                 <div className="rec_room_author m-1">
@@ -52,7 +48,7 @@ class HomeDisplay extends React.Component{
                  Date Posted
                </div>
                <div className="col-6 rec_room_stats">
-                 <i className="fas fa-comment"></i> 5 &nbsp;&nbsp;
+                 <i className="fas fa-comment"></i> 55 &nbsp;&nbsp;
                  <i className="fas fa-users"></i> 12 &nbsp;
                  <i className="fas fa-heart"></i> 50
                </div>
@@ -67,7 +63,7 @@ class HomeDisplay extends React.Component{
   }
 
   render(){
-    var settings = {
+    const settings = {
       dots: true,
       infinite: true,
       speed: 500,
@@ -79,14 +75,16 @@ class HomeDisplay extends React.Component{
       focusOnSelect:true,
       autoplay: true,
       autoplaySpeed: 2000,
-    };
-    const {isAuthenticated, user} = this.props.auth;
+    }
+    const {isAuthenticated, user} = this.props.auth
     const displayRecentRooms = (
       <div className="carousel_container">
         <div className = "recent_rooms ">Recent Rooms</div>
-        <Slider {...settings}>
-          {this.renderRooms()}
-        </Slider>
+          <div className = "container">
+            <div className = "row">
+            {this.renderRooms()}
+            </div>
+          </div>
       </div>
     );
 

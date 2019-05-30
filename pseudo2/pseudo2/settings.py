@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'frontend',
     'users',
     'profiles',
+    'django_extensions',
     'multiselectfield',
     'storages'
 ]

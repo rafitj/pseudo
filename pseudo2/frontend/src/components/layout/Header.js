@@ -54,9 +54,12 @@ class Header extends React.Component{
         <div onClick = {login_modal_click} className="nav-item nav-link show-login">
             <i className="fas fa-sign-in-alt"></i> Login
         </div>
-        <div onClick = {register_modal_click}  className="navlistlast nav-item nav-link">
+        <Link to = '/register' className="nav-item nav-link" >
+        <div className="navlistlast nav-item nav-link">
            <i className="fas fa-sign-in-alt"></i> Register
          </div>
+         </Link>
+
       </Fragment>
     );
     return (

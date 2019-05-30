@@ -24,6 +24,7 @@ import Discover from './features/Discover';
 import Follow from './features/Follow';
 
 import ProfileBase from './profiles/ProfileBase';
+import ProfileForm from './profiles/ProfileForm';
 
 const alertOptions = {
   timeout: 3000,
@@ -52,9 +53,11 @@ class App extends React.Component{
                     <Form {...routeProps} formMode="edit" />
                   )}  />
               <Route exact path='/create-room' component = {Form} />
-              {/*<Route exact path='/register' component = {Register} />
-            <Route exact path='/login' component = {Login} />*/}
+              <Route exact path='/register' component = {Register} />
+              <Route exact path='/login' component = {Login} />
               <Route exact path='/profile' component = {ProfileBase} />
+              <Route exact path='/profile/edit' component = {ProfileForm} />
+
             </Switch>
           </div>
           <Footer />

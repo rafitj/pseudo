@@ -1,10 +1,10 @@
-import { GET_PROFILES, EDIT_PROFILE } from '../actions/types.js'
+import { GET_PROFILES, EDIT_PROFILE, FETCH_PROFILE } from '../actions/types.js'
 
 export default (state = [], action) => {
   switch (action.type){
     case GET_PROFILES:
-      return action.payload;
     case EDIT_PROFILE:
+    case FETCH_PROFILE:
       return action.payload;
     default:
       return state;

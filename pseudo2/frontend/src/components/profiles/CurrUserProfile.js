@@ -16,8 +16,8 @@ class CurrUserProfile extends React.Component{
     if (userProfile.website!=undefined && userProfile.github!=undefined){
       return(
         <Fragment>
-        <div className="userProfile_links"><i className="fas fa-globe"></i> &nbsp; {userProfile.website.substring(8)}</div>
-        <div className="userProfile_links"><i className="fab fa-github"></i> &nbsp; {userProfile.github.substring(8)}</div>
+        <div className="userProfile_links"><i className="fas fa-globe"></i> &nbsp; <a href={userProfile.website}>{userProfile.website.substring(8)}</a> </div>
+        <div className="userProfile_links"><i className="fab fa-github"></i> &nbsp; <a href={userProfile.github}>{userProfile.github.substring(8)} </a></div>
         </Fragment>
       );
     }
@@ -48,7 +48,9 @@ class CurrUserProfile extends React.Component{
                   {this.renderLinks()}
                   <div className="userProfile_line"></div>
                   <div className="userProfile_skills">{userProfile.skills}</div>
-                  <button className = "profile_edit_buttons"><i className="fas fa-user-edit"></i> Edit Profile</button>
+                  <Link to = '/profile/edit'>
+                    <button className = "profile_edit_buttons"><i className="fas fa-user-edit"></i> Edit Profile</button>
+                  </Link>
                   <button className = "profile_edit_buttons"><i className="fas fa-file-image"></i> New Profile Image</button>
                   <button className = "profile_edit_buttons"><i className="fas fa-key"></i> Reset Password</button>
               </div>

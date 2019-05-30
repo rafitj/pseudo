@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development --watch ./pseudo2/frontend/src/index.js --output ./pseudo2/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./pseudo2/frontend/src/index.js --output ./pseudo2/frontend/static/frontend/main.js"
+    "dev": "webpack --mode development ./pseudo2/frontend/src/index.js --output ./pseudo2/frontend/static/frontend/main.js && aws s3 sync  ./pseudo2/frontend/static/frontend  s3://pseudo-project-files/static/frontend --acl public-read-write",
+    "build": "webpack --mode production ./pseudo2/frontend/src/index.js --output ./pseudo2/frontend/static/frontend/main.js && aws s3 sync  ./pseudo2/frontend/static/frontend  s3://pseudo-project-files/static/frontend --acl public-read-write"
   },
   "keywords": [],
   "author": "",
@@ -47,6 +47,7 @@
     "react-transition-group": "^4.0.0",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1"
   }
 }

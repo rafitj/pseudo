@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 from versatileimagefield.fields import VersatileImageField
 import uuid
-
+ 
 
 def profile_pic_hashed(instance, filename):
     return "{}.{}".format(uuid.uuid4(), filename.split(".")[-1])
@@ -15,6 +15,7 @@ class Profile(models.Model):
     title = models.CharField(max_length=50, default='Profile Title')
     github = models.URLField(default='')
     website = models.URLField(default='')
+    hire = models.BooleanField(default=True)
     profile_image = VersatileImageField(
         default='profile_pic_hashed/default_profile_image.jpg', upload_to='profile_pic_hashed')
     skills = models.CharField(max_length=200, default='')

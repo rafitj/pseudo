@@ -8,7 +8,8 @@ import history from '../common/history';
 export class Login extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    redirect: false
   };
 
   renderContent(){
@@ -17,7 +18,7 @@ export class Login extends Component {
     <Fragment>
       <form className = "login-form" onSubmit={this.onSubmit}>
         <div className="form-group">
-          <label htmlFor="username"><i class="fas fa-user prefix"></i></label>
+          <label htmlFor="username"><i className="fas fa-user prefix"></i></label>
           <input
             type="text"
             className="form-control"
@@ -27,7 +28,7 @@ export class Login extends Component {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password"><i class="fas fa-lock prefix"></i></label>
+          <label htmlFor="password"><i className="fas fa-lock prefix"></i></label>
           <input
             type="password"
             className="form-control"
@@ -38,12 +39,12 @@ export class Login extends Component {
         </div>
         <div class="forgot_pass_div">
             <small>
-              <a class="forgot_pass" href="#">Forgot your password?</a>
+              <a className="forgot_pass" href="#">Forgot your password?</a>
             </small>
         </div>
         <div className="form-group">
           <button type="submit" className="login_button">
-            <span class="login_button_text">Login</span>
+            <span className="login_button_text">Login</span>
           </button>
         </div>
       </form>
@@ -53,14 +54,18 @@ export class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.login(this.state.username, this.state.password);
+    this.props.login(this.state.username, this.state.password)
+    this.setState({ redirect: true })
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
+    const { redirect } = this.state;
+    console.log(redirect)
+    if (redirect) {
+      this.setState({ redirect: false })
+      return <Redirect to='/'/>;
     }
     return (
       this.renderContent()

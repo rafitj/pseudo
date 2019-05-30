@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 import {addRoom,editRoom} from '../../actions/rooms'
 import { Editor } from '@tinymce/tinymce-react';
-
+ 
 
 class Form extends React.Component{
   state = {

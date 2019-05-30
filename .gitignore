@@ -3,3 +3,6 @@ node_modules/
 *.log
 local_settings.py
 db.sqlite3
+lib/
+bin/
+include/

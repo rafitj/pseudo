@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { register } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
+import { close_register, open_register } from "../../actions/register_modal";
 
 export class Register extends Component {
   state = {
@@ -81,7 +81,7 @@ export class Register extends Component {
             </div>
             <div className="form-group">
               <button type="submit" className="login_button">
-                <span class="login_button_text">Sign-Up</span>
+                <span className="login_button_text">Sign-Up</span>
               </button>
             </div>
           </form>
@@ -94,7 +94,9 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
+
+
 export default connect(
   mapStateToProps,
-  { register, createMessage }
+  { register, close_register, open_register, createMessage }
 )(Register);

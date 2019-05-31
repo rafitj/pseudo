@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Login from './Login';
 import { social_login } from "../../actions/socialauth";
 import { connect } from "react-redux";
+import { close_login, open_login } from "../../actions/login_modal";
 
 class LoginModal extends React.Component {
   render() {
+      console.log(this.props.close_login)
       return (
         <Modal
-          {...this.props}
+          show = {this.props.show.login_modal}
+          onHide = {this.props.close_login}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
@@ -19,7 +21,7 @@ class LoginModal extends React.Component {
           <Modal.Body className="modal-body login-modal-body">
             <div className="login-modal-title">
               <h2><strong>LOGIN</strong></h2>
-            </div>
+            </div> 
             <Login />
               <div className="or_connect_with">
                 <small className = "muted_text">OR CONNECT WITH </small>
@@ -46,5 +48,8 @@ class LoginModal extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  loginModalShow: state.loginModal
+});
 
-export default connect(null, {social_login})(LoginModal);
+export default connect(mapStateToProps, {social_login, open_login, close_login})(LoginModal);

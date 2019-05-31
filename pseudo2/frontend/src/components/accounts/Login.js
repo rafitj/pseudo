@@ -2,6 +2,7 @@ import React, { Component, Fragment} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
+import { close_login, open_login } from "../../actions/login_modal";
 import Modal from '../common/Modal';
 import history from '../common/history';
 
@@ -37,7 +38,7 @@ export class Login extends Component {
             value={password}
           />
         </div>
-        <div class="forgot_pass_div">
+        <div className="forgot_pass_div">
             <small>
               <a className="forgot_pass" href="#">Forgot your password?</a>
             </small>
@@ -55,16 +56,19 @@ export class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.username, this.state.password)
-    this.setState({ redirect: true })
+    if (this.props.isAuthenticated){
+      this.props.close_login()
+      this.setState({ redirect: true })
+    }
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
     const { redirect } = this.state;
-    console.log(redirect)
     if (redirect) {
       this.setState({ redirect: false })
+      this.props.close_login()
       return <Redirect to='/'/>;
     }
     return (
@@ -75,4 +79,4 @@ export class Login extends Component {
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
-export default connect(mapStateToProps,{ login })(Login);
+export default connect(mapStateToProps,{ login , close_login, open_login})(Login);

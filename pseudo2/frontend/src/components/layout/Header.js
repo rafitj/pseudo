@@ -3,18 +3,14 @@ import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
+import { open_login, close_login } from '../../actions/login_modal';
+import { open_register, close_register } from '../../actions/register_modal';
 import PseudoLogo from '../../../static/frontend/assets/PseudoLogo.png';
 import LoginModal from '../accounts/LoginModal';
 import RegisterModal from '../accounts/RegisterModal';
 
 class Header extends React.Component{
-  constructor(props) {
-    super(props)
-    this.state = { loginModalShow: false, registerModalShow: false, };
-  }
   render(){
-    let loginModalClose = () => this.setState({ loginModalShow: false });
-    let registerModalClose = () => this.setState({ registerModalShow: false });
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <Fragment>
@@ -42,30 +38,21 @@ class Header extends React.Component{
         </button>
       </Fragment>
     );
-    const login_modal_click = () => {
-        this.setState({ loginModalShow: true});
-    }
-    const register_modal_click = () => {
-        this.setState({ registerModalShow: true});
-    }
-
     const guestLinks = (
       <Fragment>
-        <div onClick = {login_modal_click} className="nav-item nav-link show-login">
+        <div onClick = {this.props.open_login} className="nav-item nav-link show-login">
             <i className="fas fa-sign-in-alt"></i> Login
         </div>
-        <Link to = '/register' className="nav-item nav-link" >
-        <div className="navlistlast nav-item nav-link">
+        <div onClick = {this.props.open_register} className="navlistlast nav-item nav-link">
            <i className="fas fa-sign-in-alt"></i> Register
          </div>
-         </Link>
 
       </Fragment>
     );
     return (
       <Fragment>
-          <LoginModal show={this.state.loginModalShow} onHide={loginModalClose}/>
-          <RegisterModal show={this.state.registerModalShow} onHide={registerModalClose}/>
+          <LoginModal show = {this.props.loginModalShow}/>
+          <RegisterModal show = {this.props.registerModalShow}/>
           <nav className="navbar navbar-expand-md" >
               <Link to = '/' className="nav-item nav-link" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
@@ -96,6 +83,10 @@ class Header extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  loginModalShow : state.login_modal,
+  registerModalShow : state.register_modal,
 });
-export default connect(mapStateToProps, {logout})(Header);
+export default connect(
+  mapStateToProps, 
+  {logout, open_register, close_register, open_login, close_login })(Header);

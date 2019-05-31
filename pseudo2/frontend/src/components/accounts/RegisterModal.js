@@ -1,19 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Register from './Register';
-
+import { connect } from "react-redux";
+import {close_register } from "../../actions/register_modal";
 class RegisterModal extends React.Component {
   render() {
       return (
         <Modal
-          {...this.props}
+          show = {this.props.show.register_modal}
+          onHide={this.props.close_register}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          <Modal.Header className = "register-modal-header" >
-          </Modal.Header>
+          <Modal.Header className = "register-modal-header" ></Modal.Header>
+
           <Modal.Body className="modal-body register-modal-body">
             <div className="register-modal-title">
               <h2><strong>REGISTER</strong></h2>
@@ -35,14 +36,17 @@ class RegisterModal extends React.Component {
               <small className = "muted_text"> Already have an account?</small>
               <br />
               <a className="login-now" >Login Here!</a>
-
           </Modal.Body>
-          <Modal.Footer className = "register-modal-footer">
-          </Modal.Footer>
+
+          <Modal.Footer className = "register-modal-footer"> </Modal.Footer>
+
         </Modal>
       );
   }
 }
 
+const mapStateToProps = state => ({
+  registerModalShow: state.registerModal
+});
 
-export default RegisterModal;
+export default connect(mapStateToProps, {close_register})(RegisterModal);

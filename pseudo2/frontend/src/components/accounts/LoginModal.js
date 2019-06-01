@@ -15,6 +15,7 @@ class LoginModal extends React.Component {
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
+          className = "modal_class"
         >
           <Modal.Header className = "login-modal-header" >
           </Modal.Header>

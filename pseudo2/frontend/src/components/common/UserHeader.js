@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class UserHeader extends React.Component{
   render(){
+    console.log(this.props.user)
     const user = this.props.user;
     if (!user){
       return null;
@@ -29,7 +30,7 @@ class UserHeader extends React.Component{
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.user.find(user => user.id === ownProps.userId)
+    user: state.user
   };
 }
 

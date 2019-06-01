@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { register } from "../../actions/auth";
 import { createMessage } from "../../actions/messages";
+import { createProfile } from "../../actions/profiles";
 import { close_register, open_register } from "../../actions/register_modal";
 
 export class Register extends Component {
@@ -10,34 +11,14 @@ export class Register extends Component {
     username: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    redirect: false
   };
 
-  onSubmit = e => {
-    e.preventDefault();
-    const { username, email, password, password2 } = this.state;
-    if (password !== password2) {
-      this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
-    }
-    else {
-      const newUser = {
-        username,
-        password,
-        email
-      };
-      this.props.register(newUser);
-    }
-  };
-
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
-
-  render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to="/" />;
-    }
+  renderContent ()  {
     const { username, email, password, password2 } = this.state;
     return (
-      <Fragment>
+<Fragment>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label htmlFor="username"><i className="fas fa-user prefix"></i></label>
@@ -88,6 +69,38 @@ export class Register extends Component {
       </Fragment>
     );
   }
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { username, email, password, password2 } = this.state;
+    if (password !== password2) {
+      this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
+    }
+    else {
+      const newUser = {
+        username,
+        password,
+        email
+      };
+      this.props.register(newUser);
+    }
+  };
+
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
+
+  render() {
+    if (this.props.isAuthenticated){
+      this.props.close_register()
+    }
+    const { redirect } = this.state;
+    if (redirect) {
+      this.props.close_register()
+      return <Redirect to='/profile/edit'/>;
+    }
+    else {
+      return ( this.renderContent() );
+    }
+  }
 }
 
 const mapStateToProps = state => ({
@@ -98,5 +111,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { register, close_register, open_register, createMessage }
+  { register, close_register, createProfile, open_register, createMessage }
 )(Register);

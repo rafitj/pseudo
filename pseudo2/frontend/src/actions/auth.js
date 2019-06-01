@@ -1,6 +1,6 @@
 import axios from "axios";
 import { returnErrors } from "./messages";
-
+import { createProfile } from "./profiles";
 import {
   USER_LOADED,
   USER_LOADING,
@@ -36,16 +36,12 @@ export const loadUser = () => (dispatch, getState) => {
 
 // LOGIN USER
 export const login = (username, password) => dispatch => {
-  // Headers
   const config = {
     headers: {
       "Content-Type": "application/json"
     }
   };
-
-  // Request Body
   const body = JSON.stringify({ username, password });
-
   axios
     .post("/api/user/login", body, config)
     .then(res => {
@@ -77,6 +73,7 @@ export const register = ({ username, password, email }) => dispatch => {
   axios
     .post("/api/user/register", body, config)
     .then(res => {
+      dispatch(createProfile(res.data.user.id))
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data

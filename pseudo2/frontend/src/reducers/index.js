@@ -3,7 +3,7 @@ import rooms from './rooms';
 import errors from './errors'
 import messages from './messages'
 import auth from './auth'
-import users from './users'
+import user from './user'
 import profiles from './profiles'
 import login_modal from './login_modal';
 import register_modal from './register_modal';
@@ -14,7 +14,7 @@ export default combineReducers({
   messages,
   auth,
   modal,
-  user: users,
+  user,
   profiles,
   register_modal,
   login_modal

@@ -3,7 +3,7 @@ import {GET_ERRORS, EDIT_ROOM, GET_ROOMS, GET_ROOM, GET_ROOM_CREATOR, DELETE_ROO
 import { createMessage, returnErrors } from "./messages";
 import {tokenConfig} from './auth';
 import _ from 'lodash';
-import {fetchUser} from './users';
+import {fetchUser} from './user';
 
 export const getRoomsAndCreator =  () => {
   return async (dispatch, getState) => {

@@ -115,7 +115,8 @@ class CurrUserProfile extends React.Component{
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  userProfile : state.profiles.find(profile => profile.user === ownProps.currUser)
+  user : state.auth.user.id,
+  userProfile : state.profiles
 });
 
 export default connect(mapStateToProps,{getProfiles})(CurrUserProfile);

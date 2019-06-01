@@ -56,24 +56,20 @@ export class Login extends Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.login(this.state.username, this.state.password)
-    if (this.props.isAuthenticated){
-      this.props.close_login()
-      this.setState({ redirect: true })
-    }
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    if (this.props.isAuthenticated){
+      this.props.close_login()
+    }
     const { redirect } = this.state;
     if (redirect) {
-      this.setState({ redirect: false })
       this.props.close_login()
       return <Redirect to='/'/>;
     }
-    return (
-      this.renderContent()
-    );
+    return ( this.renderContent() );
   }
 }
 const mapStateToProps = state => ({

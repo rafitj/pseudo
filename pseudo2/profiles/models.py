@@ -10,11 +10,11 @@ def profile_pic_hashed(instance, filename):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=150, default='Profile Bio')
     title = models.CharField(max_length=50, default='Profile Title')
-    github = models.URLField(default='')
-    website = models.URLField(default='')
+    github = models.URLField(default='',  null=True, blank=True)
+    website = models.URLField(default='',  null=True, blank=True)
     hire = models.BooleanField(default=True)
     profile_image = VersatileImageField(
         default='profile_pic_hashed/default_profile_image.jpg', upload_to='profile_pic_hashed')

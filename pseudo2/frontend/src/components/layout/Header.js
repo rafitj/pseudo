@@ -54,13 +54,13 @@ class Header extends React.Component{
           <LoginModal show = {this.props.loginModalShow}/>
           <RegisterModal show = {this.props.registerModalShow}/>
           <nav className="navbar navbar-expand-md" >
-              <Link to = '/' className="nav-item nav-link" >
+              <Link to = '/' className="nav-item" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
               </Link>
-              <Link className="nav-item nav-anchor nav-link" to="/discover"> <i className="fas mr-1 fa-fire"></i> Discover </Link>
-              <Link className="nav-item nav-anchor nav-link" to="/follow"> <i className="fas mr-1 fa-user-friends"></i> Follow </Link>
-              <Link className="nav-item nav-anchor nav-link" to="/"> <i className="fas mr-1 fa-comment-dollar"></i> Hire </Link>
-              <Link className="nav-item nav-anchor nav-link" to="/"> <i className="fas mr-1 fa-question-circle"></i> About </Link>
+              <Link className="nav-item" to="/discover"> <i className="fas mr-1 fa-fire"></i> Discover </Link>
+              <Link className="nav-item" to="/follow"> <i className="fas mr-1 fa-user-friends"></i> Follow </Link>
+              <Link className="nav-item" to="/"> <i className="fas mr-1 fa-comment-dollar"></i> Hire </Link>
+              <Link className="nav-item" to="/"> <i className="fas mr-1 fa-question-circle"></i> About </Link>
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="span_class">

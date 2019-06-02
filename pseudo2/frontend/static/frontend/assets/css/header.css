@@ -1,51 +1,38 @@
 
 .navbar {
-  background: #202122;
-  height: 6rem;
+  margin-top: 0.75rem;
+  background: none;
+  height: 5.5rem;
 }
 .nav-item {
-  background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  color: #2d2d2d;
   transition: all 0.25s ease;
 }
 .nav-item:hover{
-  opacity: 0.5;
+  color: #b3bdc3;
+  text-decoration: none;
 }
 .nav-logo {
-  width: 4.1rem;
+  width: 3.2rem;
+  padding: 0.3rem;
 }
 .center-content{
   text-align: center;
 }
-.nav-anchor {
-  font-family: 'Helvetica';
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-nav .fas, nav .fab, nav .fa {
-  background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 nav, .navbar, .navbar-expand-md {
   text-align: center;
   padding: 2rem 9rem;
-  box-shadow: 0px 0px 15px #131313;
 }
-
 .nav-logout-button{
   border: none;
 }
-
 .dropdown-menu{
   background: #202122;
 }
-
-
 .btn .span_class{
-  background: -webkit-linear-gradient(#f07854, #f5a658);
+  background: -webkit-linear-gradient(#202122, #202122);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

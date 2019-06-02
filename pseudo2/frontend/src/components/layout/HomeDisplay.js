@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
-import BannerImg from '../../../static/frontend/assets/home_banner.png'
+import banner_img_1 from '../../../static/frontend/assets/banner_img_1.png'
+import banner_img_2 from '../../../static/frontend/assets/banner_img_2.png'
 import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
 import Rooms from '../rooms/Rooms';
@@ -12,6 +13,15 @@ class HomeDisplay extends React.Component{
 
   componentDidMount() {
     this.props.getRoomsAndCreator();
+    const x =  Math.floor(Math.random()*2 + 1)
+    if (x === 1){
+      this.banner_header = "Sometimes building great things means getting help..."
+      this.banner_img = banner_img_1
+    }
+    else {
+      this.banner_header = "Sometimes it takes more than a StackOverflow search..."
+      this.banner_img = banner_img_2
+    }
   }
 
   renderRooms(){
@@ -62,20 +72,10 @@ class HomeDisplay extends React.Component{
     }
   }
 
+
+
   render(){
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      centerMode: true,
-      arrows: true,
-      centerPadding: '60px',
-      focusOnSelect:true,
-      autoplay: true,
-      autoplaySpeed: 2000,
-    }
+
     const {isAuthenticated, user} = this.props.auth
     const displayRecentRooms = (
       <div className="carousel_container">
@@ -87,12 +87,34 @@ class HomeDisplay extends React.Component{
           </div>
       </div>
     );
-
     const displayBanner = (
-        <div className = "banner" >
-          <img className="banner-img" src={BannerImg} alt="New-Banner-Image" />
-            <button className="b_button" type="button" name="button"><span className="button-txt">Sign-Up</span></button>
-        </div>
+          <div className = "container">
+            <div className = "row">
+              <div className = "col-6">
+                <div className = "banner_img_container">
+                <img className="banner_img" src={this.banner_img} alt="Banner-Image" />
+                </div>
+              </div>
+              <div className = "col-6">
+                <div className = "landing_text_container">
+                 <h1 className = "pseudo_header">{this.banner_header}</h1>
+                  <p className = "pseudo_intro"> Pseudo is the world’s first, problem focused, micro-freelance 
+                      platform. We bring together developers, 
+                      designers and creators to form an intimate
+                      community to help you build anything and everything. Join us today!</p>
+                <button className = "landing_button">Sign-Up</button>
+                <button className = "landing_button">Login</button>
+                <p className = "pseudo_intro pseudo_learn">
+                  <small> <a className = "pseudo_learn" href = "#">Learn how it works.</a></small> </p>
+                </div>
+              </div>
+
+              <div className = "list_selection col-12">
+                <p>Problems</p>
+                <p>People</p>
+              </div>
+            </div>
+          </div>
     );
     return (
       <Fragment>

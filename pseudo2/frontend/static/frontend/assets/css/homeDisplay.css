@@ -1,29 +1,73 @@
-.banner{
-  position: relative;
-}
-.banner-img{
-  width: 100vw;
-}
-.b_button {
-  position: absolute;
-  bottom: 9%;
-  left: 10%;
-  outline: none;
-  height: 18%;
+.banner_img_container{
   text-align: center;
-  width: 15%;
-  border-radius: 40px;
-  background: #fff;
-  border: 2px solid white;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 12px;
-  font-weight: bold;
+}
+.banner_img{
+  width: 100%;
+  padding: 3rem;
+  padding-bottom: 0.5rem;
+  padding-top: 2rem;
+}
+.landing_text_container{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.pseudo_header{
+  margin-top: 10%;
+  color: #202122;
+  padding: 1rem 0.75rem 0 0.75rem;
+}
+.pseudo_intro{
+  color: #5a5a5a;
+  padding: 0.75rem 1.5rem 0.5rem 1.5rem;
+}
+.pseudo_learn{
+  padding-top: 0;
+  text-decoration: none;
+  color: #cc0a60;
+  transition: all 0.25s ease;
+
+}
+.pseudo_learn:hover{
   cursor: pointer;
+  text-decoration: none;
+  color: #159fd5;
+}
+.list_selection{
+  text-align: center;
+  color: #202122;
+  margin: 1.5rem 0 0 0;
+  font-size: 1.3rem;
+}
+.list_selection p{
+  display: inline-block;
+  margin: 0 1rem 0 1rem;
+  text-decoration: none;
   transition: all 0.25s ease;
 }
-.b_button:hover {
+.list_selection p:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.landing_button {
+  border-radius: 40px;
+  margin: 1.5rem 1rem;
+  font-size: 1rem;
+  width: 11rem;
+  padding: .5rem 2rem;
+  color: #202122;
+  box-shadow: 0 0 4px 0 rgba(157, 96, 212, 0.5);
+  border: solid 5px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(45deg, #159fd5, #cc0a60);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #fff inset;
+  transition: all 0.25s ease;
+  margin-top: 0rem;
+}
+.landing_button:hover {
   transform: scale(1.05);
+  cursor: pointer;
 }
 .button-txt{
   font-size: 2vw;

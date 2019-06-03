@@ -2,11 +2,12 @@ import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { logout } from '../../actions/auth';
+import { open_logout, close_logout } from '../../actions/logout_modal';
 import { open_login, close_login } from '../../actions/login_modal';
 import { open_register, close_register } from '../../actions/register_modal';
 import PseudoLogo from '../../../static/frontend/assets/PseudoLogo.png';
 import LoginModal from '../accounts/LoginModal';
+import LogoutModal from '../accounts/LogoutModal';
 import RegisterModal from '../accounts/RegisterModal';
 
 class Header extends React.Component{
@@ -14,53 +15,41 @@ class Header extends React.Component{
     const {isAuthenticated, user} = this.props.auth;
     const authLinks = (
       <Fragment>
-          <div className="mt-1  dropdown">
-            <button className="nav-logout-button nav-item nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span className = "span_class"><i className="fas mr-1 fa-caret-square-down"></i> Rooms </span>
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <Link to = '/' className="nav-item nav-link" >
-                <i className="fas mr-1 fa-door-closed"></i> Enter
-              </Link>
-              <Link to = '/create-room' className="nav-item nav-link" >
-                  <i className="fas mr-1  fa-plus-circle"></i> Create
-              </Link>
-              <Link to = '/my-rooms' className="nav-item nav-link" >
-                  <i className="fas mr-1 fa-folder"></i> My Rooms
-              </Link>
-            </div>
-          </div>
-        <Link to = '/profile' className="mt-1 nav-item nav-link" >
-          <i className="fas fa-user mr-1"></i> {user ? `${user.username}'s Profile` : ""}
+        <Link to = '/room-dashboard' className="mt-1 nav-item nav-link" >
+          Rooms
         </Link>
-        <button onClick = {this.props.logout} className="mt-1 nav-logout-button navlistlast nav-item nav-link">
-          <i className="fas mr-1 fa-sign-out-alt"></i> Logout
+        <Link to = '/profile' className="mt-1 nav-item nav-link" >
+          {user ? `${user.username}'s Profile` : ""}
+        </Link>
+        <button onClick = {this.props.open_logout} className="mt-1 nav-logout-button navlistlast nav-item nav-link">
+           Logout
         </button>
       </Fragment>
     );
     const guestLinks = (
       <Fragment>
         <div onClick = {this.props.open_login} className="nav-item nav-link show-login">
-            <i className="fas fa-sign-in-alt"></i> Login
+             Login
         </div>
         <div onClick = {this.props.open_register} className="navlistlast nav-item nav-link">
-           <i className="fas fa-sign-in-alt"></i> Register
+           Register
          </div>
 
       </Fragment>
     );
     return (
       <Fragment>
+          <LogoutModal show = {this.props.logoutModalShow}/>
           <LoginModal show = {this.props.loginModalShow}/>
           <RegisterModal show = {this.props.registerModalShow}/>
           <nav className="navbar navbar-expand-md" >
               <Link to = '/' className="nav-item" >
                   <img className = "nav-logo" src = {PseudoLogo} alt = "nav-log" />
               </Link>
-              <Link className="nav-item" to="/discover"> <i className="fas mr-1 fa-fire"></i> Discover </Link>
-              <Link className="nav-item" to="/follow"> <i className="fas mr-1 fa-user-friends"></i> Follow </Link>
-              <Link className="nav-item" to="/"> <i className="fas mr-1 fa-comment-dollar"></i> Hire </Link>
-              <Link className="nav-item" to="/"> <i className="fas mr-1 fa-question-circle"></i> About </Link>
+              <Link className="nav-item" to="/discover"> Discover </Link>
+              <Link className="nav-item" to="/follow">  People </Link>
+              <Link className="nav-item" to="/"> Hire </Link>
+              <Link className="nav-item" to="/">  About </Link>
 
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="span_class">
@@ -86,7 +75,8 @@ const mapStateToProps = state => ({
   auth: state.auth,
   loginModalShow : state.login_modal,
   registerModalShow : state.register_modal,
+  logoutModalShow: state.logout_modal
 });
 export default connect(
   mapStateToProps, 
-  {logout, open_register, close_register, open_login, close_login })(Header);
+  {open_logout, close_logout, open_register, close_register, open_login, close_login })(Header);

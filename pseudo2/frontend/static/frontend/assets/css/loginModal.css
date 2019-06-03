@@ -4,23 +4,29 @@
 .login-form{
 	text-align: center;
 }
+.form-group{
+  margin: 0;
+}
+.first-form-group{
+  margin: 0.5rem 0 0.7rem 0;
+}
+.login-form input:placeholder-shown, .login-form input::placeholder{
+  color: #9fa6aa80;
+}
+.login-form input, .login-form input:focus, .login-form input:active{
+  width: 100%;
+  color: #7c7c7c;
+  background: none;
+  border: solid 1px #9fa6aa;
+  border-radius: 7px;
+  background: url(images/icon.png) no-repeat right center;
+}
 .login-modal-title{
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  background: -webkit-linear-gradient(#f5a658, #f07854);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #202122;
 }
-.login-modal-header{
-  background-image: linear-gradient(90deg, #f5a658, #f07854);
-  height: 1.4rem;
-}
-
-.login-modal-footer{
-  background-image: linear-gradient(90deg, #f5a658, #f07854);
-  height: 1.1rem;
-}
-
 
 .login_button:active, .login_button:focus  {
 	-webkit-box-shadow: none;
@@ -29,21 +35,12 @@
   -moz-outline-style: none;
 }
 
-
-.login_icons{
-  background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.signup-now{
+  color: #9fa6aa;
   transition: all 0.25s ease;
-  margin-right: 0.4rem;
 }
 .signup-now:hover{
-	background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.signup-now:hover{
-  opacity: 0.6;
+	color: #202122;
   cursor: pointer;
 }
 
@@ -64,19 +61,27 @@
 
 .login-modal-body .form-control{
   display: inline;
-  width: 75%;
-  margin: 0.5rem 0.5rem;
+  width: 100%;
+  margin: 0.3rem 0.3rem;
+}
+.modal-content{
+  margin: 0 auto;
+  background: #f1f1f1;
+  border-radius: 30px;
+  width: 60%;
+  border:none;
+  box-shadow: 0 0 10px #afafaf7e;
 }
 
 .login-modal-body{
+  border-radius: 30px;
   padding: 3rem 4rem;
-  background: #202122;
+  background: #f1f1f1;
   height: 34rem;
   text-align: center;
   margin-bottom: -1px;
   margin-top: -1px;
 }
-
 .bottom-form-control{
   display: inline;
   width: 75%;
@@ -93,14 +98,13 @@
 }
 
 .forgot_pass_div{
+  color: #9fa6aa;
   text-align: right;
-  padding: 0 10%;
+  margin-bottom: 1rem;
 }
 
 .forgot_pass{
-	background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+	color: #9fa6aa;
   transition: all 0.25s ease;
 }
 
@@ -108,45 +112,47 @@
   opacity: 0.5;
 }
 
-.login_button{
-  margin-top: 1rem;
-  background: #202122;
-  border-radius: 20px;
-  border: 2px solid #444 ;
+.login_button {
+  border-radius: 40px;
+  font-size: 1rem;
   width: 7rem;
   height: 2.5rem;
+  color: #202122;
+  box-shadow: 0 0 3px 0 rgba(157, 96, 212, 0.5);
+  border: solid 2.5px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(45deg, #159fd5, #cc0a60);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #f1f1f1 inset;
   transition: all 0.25s ease;
 }
-
-.login_button:hover{
-  cursor: pointer;
-  border: 2px solid #f07854 ;
-  box-shadow: 0px 0px 10px #181818;
-  transform: scale(1.1);
+.login_button:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 1000px 1px #202122 inset;
+  background-image: linear-gradient(#202122, #202122), linear-gradient(45deg, #159fd5, #cc0a60);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  text-decoration: none;
+	color: white;
 }
-
-.login_button_text{
-  font-size: 1.3rem;
-  background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-hr{
-  height: 1px;
-  color: #444;
-  background-color: #444;
-  margin-bottom: 0.5rem;
-  width: 80%;
-  outline-color: #444;
+.or_connect_with hr{
+  height: 0.1px;
+  color: #757575;
+  background-color: #757575;
+  width: 23%;
+  margin: 0.2rem 0.4rem;
+  margin-bottom: 0.1rem;
+  display: inline-block;
+  outline-color: #757575;
 }
 
 .muted_text{
-  color: #444;
+  color: #9fa6aa;
 }
 
 .or_connect_with{
   margin-top: 1rem;
+  color: #757575;
 }
 
 .login_error_icon{
@@ -156,33 +162,31 @@ hr{
 }
 
 .social-button {
-  margin: 0 0.4rem;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  display: block;
-  position: relative;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-  border: 2px solid #444;
+  margin: 0.5rem;
+  width: 45%;
+  height: 35px;
+  border-radius: 8px;
+  line-height: 2.2;
+  font-family: Helvetica, sans-serif;
+  border: solid 1px #9fa6aa;
   text-align: center;
   display: inline-block;
   vertical-align: middle;
   position: relative;
   z-index: 10;
-  font-size: 1.7rem;
-  color: #333;
+  font-size: 1.0rem;
+  color: #202122;
   transition: all 0.25s ease;
 }
 
 .social-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   border: 2px solid transparent;
-  background-image: linear-gradient(#202122, #202122), linear-gradient(90deg, #f5a658, #f07854);
+  background-image: linear-gradient(#202122, #202122), linear-gradient(45deg, #159fd5, #cc0a60);
   background-origin: border-box;
   background-clip: content-box, border-box;
-	color: #f07854;
+  text-decoration: none;
+	color: white;
 }
 
 .social-container {
@@ -190,14 +194,12 @@ hr{
   margin: 1rem auto;
 }
 
-.social-container .fab{
-	background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .form-group .fas{
 	background: -webkit-linear-gradient(#f07854, #f5a658);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
+
+.modal-backdrop.show {
+  opacity: 0;
 }

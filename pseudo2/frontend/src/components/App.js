@@ -13,6 +13,7 @@ import Form from './rooms/Form';
 import Rooms from './rooms/Rooms';
 import RoomModal from './rooms/RoomModal';
 import MyRooms from './rooms/MyRooms';
+import RoomDashboard from './rooms/RoomDashboard';
 
 import Alerts from './layout/Alerts';
 import Register from './accounts/Register';
@@ -52,6 +53,7 @@ class App extends React.Component{
               <Route  name="edit-room" path="/edit-room/:roomId" render={(routeProps) => (
                     <Form {...routeProps} formMode="edit" />
                   )}  />
+              <Route exact path='/room-dashboard' component = {RoomDashboard} />
               <Route exact path='/create-room' component = {Form} />
               <Route exact path='/register' component = {Register} />
               <Route exact path='/login' component = {Login} />

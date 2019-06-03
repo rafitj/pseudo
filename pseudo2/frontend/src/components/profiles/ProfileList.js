@@ -39,17 +39,17 @@ class ProfileList extends React.Component{
                   </div>
                   <div className="profile_line mb-1"></div>
                   <div className="profile_bio mb-2">{profile.bio}</div>
+                  <div className="profile_actions">
+                    <i className="f mr-2 fas fa-lg fa-user-circle"></i>
+                    <i className="f mr-2 fas fa-lg fa-envelope"></i>
+                    <i className="f far fa-lg fa-star"></i>
+                  </div>
                   </div>
                 </div>
+                
               </div>
+            
             </div>
-            <div className="profile_actions">
-              <i className="f mr-2 fas fa-lg fa-user-circle"></i>
-              <i className="f mr-2 fas fa-lg fa-envelope"></i>
-              <i className="f far fa-lg fa-star"></i>
-            </div>
-          <div className="profile_border">
-          </div>
          </div>
 
         );

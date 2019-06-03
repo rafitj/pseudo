@@ -77,7 +77,7 @@ class Rooms extends React.Component{
         }
 
         return(
-          <div onClick={modal_click} data-aos="fade-up" data-aos-duration={duration} key = {room.id} className="mt-4 col-4 room" >
+          <div onClick={modal_click} data-aos="fade-up" data-aos-duration={duration} key = {room.id} className="mt-2 col-4 room" >
             <div className ="room">
             <div className="room_state"></div>
             <div className="room_body p-3 mr-1 ml-1">

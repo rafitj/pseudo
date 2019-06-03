@@ -1,8 +1,8 @@
 
 .base_footer{
   margin-top: 2rem;
-  background-color: #202122;
-  height: 9rem;
+  background-color: #202122; 
+  height: 8rem;
   width: 100%;
   color: #444;
   text-align: center;
@@ -11,8 +11,8 @@
 }
 
 .footer_border{
-  background-image: linear-gradient(-90deg, #f5a658, #f07854);
-  height: 0.5rem;
+  background-image: linear-gradient(-90deg, #cc0a60, #159fd5);
+  height: 0.35rem;
 }
 
 .my_row{

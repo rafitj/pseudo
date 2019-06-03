@@ -5,7 +5,7 @@ class Search extends React.Component{
   render(){
     return (
       <Fragment>
-        <div className = "discover_search">
+        <div className = "discover_search"  data-aos="fade" data-aos-duration = "1000" >
             <div className="Search is-Search-open" data-search>
               <form onSubmit = {this.props.onSubmit} action="">
               <label htmlFor="Search">

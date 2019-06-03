@@ -88,14 +88,14 @@ class HomeDisplay extends React.Component{
       </div>
     );
     const displayBanner = (
-          <div className = "container">
+          <div className = "container" >
             <div className = "row">
-              <div className = "col-6">
+              <div className = "col-6" data-aos="fade" data-aos-duration = "1000">
                 <div className = "banner_img_container">
                 <img className="banner_img" src={this.banner_img} alt="Banner-Image" />
                 </div>
               </div>
-              <div className = "col-6">
+              <div className = "col-6" data-aos="fade" data-aos-duration = "1000" data-aos-delay = "400">
                 <div className = "landing_text_container">
                  <h1 className = "pseudo_header">{this.banner_header}</h1>
                   <p className = "pseudo_intro"> Pseudo is the world’s first, problem focused, micro-freelance 
@@ -109,7 +109,7 @@ class HomeDisplay extends React.Component{
                 </div>
               </div>
 
-              <div className = "list_selection col-12">
+              <div className = "list_selection col-12" data-aos="fade" data-aos-duration = "1000" data-aos-delay = "750">
                 <p>Problems</p>
                 <p>People</p>
               </div>

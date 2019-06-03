@@ -4,10 +4,13 @@ import Login from './Login';
 import { social_login } from "../../actions/socialauth";
 import { connect } from "react-redux";
 import { close_login, open_login } from "../../actions/login_modal";
-
+import { open_register, close_register } from '../../actions/register_modal';
 class LoginModal extends React.Component {
   render() {
-      console.log(this.props.close_login)
+     const clickSignUp = () => {
+            this.props.close_login()
+            this.props.open_register()
+        }
       return (
         <Modal
           show = {this.props.show.login_modal}
@@ -17,33 +20,27 @@ class LoginModal extends React.Component {
           centered
           className = "modal_class"
         >
-          <Modal.Header className = "login-modal-header" >
-          </Modal.Header>
           <Modal.Body className="modal-body login-modal-body">
             <div className="login-modal-title">
-              <h2><strong>LOGIN</strong></h2>
+              <h3><strong>LOGIN</strong></h3>
             </div> 
             <Login />
               <div className="or_connect_with">
-                <small className = "muted_text">OR CONNECT WITH </small>
+                <hr /><small>OR CONNECT WITH </small><hr />
               </div>
 
               <div className="social-container">
-                <a href="#" onClick = {this.props.social_login} className="social-button"><i className="fab fa-google"></i></a>
-                <a href="#" className="social-button"><i className="fab fa-facebook-f"></i></a>
-                <a href="#" className="social-button"><i className="fab fa-twitter"></i></a>
-                <a href="#" className="social-button"><i className="fab fa-github"></i></a>
+                <a href="#" onClick = {this.props.social_login} className="social-button"><i className="fab fa-google"></i> &nbsp;Google </a>
+                <a href="#" className="social-button"><i className="fab fa-facebook-f"></i> &nbsp;Facebook </a> 
+                <a href="#" className="social-button"><i className="fab fa-twitter"></i> &nbsp;Twitter</a>
+                <a href="#" className="social-button"><i className="fab fa-github"></i> &nbsp;Github</a>
               </div>
 
-              <hr />
 
               <small className = "muted_text"> Don't have an account?</small>
               <br />
-              <a className="signup-now" >Sign-Up Now!</a>
-
+              <p onClick = {clickSignUp} className="signup-now" >Sign-Up Now!</p>
           </Modal.Body>
-          <Modal.Footer className = "login-modal-footer">
-          </Modal.Footer>
         </Modal>
       );
   }
@@ -53,4 +50,4 @@ const mapStateToProps = state => ({
   loginModalShow: state.loginModal
 });
 
-export default connect(mapStateToProps, {social_login, open_login, close_login})(LoginModal);
+export default connect(mapStateToProps, {social_login, open_register, close_register, open_login, close_login})(LoginModal);

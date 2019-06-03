@@ -18,24 +18,24 @@ export class Login extends Component {
     return (
     <Fragment>
       <form className = "login-form" onSubmit={this.onSubmit}>
-        <div className="form-group">
-          <label htmlFor="username"><i className="fas fa-user prefix"></i></label>
+        <div className="first-form-group form-group">
           <input
             type="text"
             className="form-control"
             name="username"
             onChange={this.onChange}
             value={username}
+            placeholder = "Username"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password"><i className="fas fa-lock prefix"></i></label>
           <input
             type="password"
             className="form-control"
             name="password"
             onChange={this.onChange}
             value={password}
+            placeholder = "Password"
           />
         </div>
         <div className="forgot_pass_div">

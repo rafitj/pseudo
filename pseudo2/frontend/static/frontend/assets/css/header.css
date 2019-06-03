@@ -13,6 +13,7 @@
 .nav-item:hover{
   color: #b3bdc3;
   text-decoration: none;
+  cursor: pointer;
 }
 .nav-logo {
   width: 3.2rem;

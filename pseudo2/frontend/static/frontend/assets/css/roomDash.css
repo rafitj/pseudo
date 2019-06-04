@@ -1,0 +1,68 @@
+.dashboard_box{
+  text-align: left;
+  border-radius: 20px;
+  width: 30rem;
+  height: 15rem;
+  display: inline-block;
+  margin: 1rem;
+  color: #9fa6aa;
+  box-shadow: 0 0 3px 0 rgba(157, 96, 212, 0.5);
+  border: solid 4px transparent;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(45deg, #159fd5, #cc0a60);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px white inset;
+  transition: all 0.25s ease;
+}
+.dashboard_box:hover{
+  transform: scale(1.1);
+}
+.dashboard_container{
+  text-align: center;
+  padding: 1.5rem;
+  padding-bottom: 0;
+}
+
+.dashboard_box h3{
+  padding: 1rem 0 0 1.5rem;
+}
+
+.dashboard_box p{
+  padding: 0 1.5rem;
+}
+
+.del-btn{
+  border: 2px solid #f46464;
+  color:  #f46464;
+  background: none;
+  transition: all 0.25s ease;
+}
+.del-btn:hover{
+  color:  #e1e2e2;
+  background: #f46464;
+  transform: scale(1.05);
+}
+
+.edit-btn{
+  border: 2px solid #64c6f4;
+  color:  #64c6f4;
+  background: none;
+  transition: all 0.25s ease;
+}
+.edit-btn:hover{
+  color:  #e1e2e2;
+  background: #64c6f4;
+  transform: scale(1.1);
+}
+
+.view-btn{
+  border: 2px solid #a471f4;
+  color:  #a471f4;
+  background: none;
+  transition: all 0.25s ease;
+}
+.view-btn:hover{
+  color:  #e1e2e2;
+  background: #a471f4;
+  transform: scale(1.05);
+}

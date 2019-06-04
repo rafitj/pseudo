@@ -24,7 +24,7 @@ class HomeDisplay extends React.Component{
     }
   }
 
-  renderRooms(){
+  renderRecentRooms(){
     if (_.isEmpty(this.props.rooms)){
       return (
         <div className="d-flex justify-content-center">
@@ -38,33 +38,20 @@ class HomeDisplay extends React.Component{
       return (
       this.props.rooms.slice(0, 3).map(room => {
         return(
-          <div key = {room.id} className=" ml-3 mr-3 col-4 rec_room" >
-            <div className="rec_room_state"></div>
-            <div className="rec_room_body p-3 mr-1 ml-1">
-                <div className="rec_room_author m-1">
-                  <a className="rec_room-anchor" href="#">
-                    <UserHeader userId={room.creator}/>
-                  </a>
+          <div data-aos = "fade" data-aos-duration="1000" data-aos-delay = "500" key = {room.id}  className="col-4" >
+            <div className = "rec_room">
+              <div className="rec_room_state">{Math.floor(Math.random()*3) +1}</div>
+              <div className="rec_room_body p-3">
+                  <div className="rec_room_author m-1">
+                    <a className="rec_room-anchor" href="#">
+                      <UserHeader userId={room.creator}/>
+                    </a>
+                  </div>
+                <div className="rec_room_title p-2">
+                    {room.title}
                 </div>
-              <div className="rec_room_title p-2">
-                  {room.title}
-                  <br />
               </div>
             </div>
-          <div className="pl-1 pr-1 mt-1 rec_room_footer_info">
-           <div className="container">
-             <div className="row">
-               <div className="col-6 rec_room_date">
-                 Date Posted
-               </div>
-               <div className="col-6 rec_room_stats">
-                 <i className="fas fa-comment"></i> 55 &nbsp;&nbsp;
-                 <i className="fas fa-users"></i> 12 &nbsp;
-                 <i className="fas fa-heart"></i> 50
-               </div>
-             </div>
-           </div>
-          </div>
          </div>
         );
       })
@@ -79,10 +66,12 @@ class HomeDisplay extends React.Component{
     const {isAuthenticated, user} = this.props.auth
     const displayRecentRooms = (
       <div className="carousel_container">
-        <div className = "recent_rooms ">Recent Rooms</div>
           <div className = "container">
             <div className = "row">
-            {this.renderRooms()}
+               <div data-aos = "fade" data-aos-duration="1000" className = "recent_rooms_title">Recent Rooms</div>
+               <div data-aos = "fade" data-aos-duration="1000"  className = "rec_room_border_top"></div>
+              {this.renderRecentRooms()}
+              <div data-aos = "fade" data-aos-duration="1000"  className = "rec_room_border_bottom"></div>
             </div>
           </div>
       </div>
@@ -109,10 +98,7 @@ class HomeDisplay extends React.Component{
                 </div>
               </div>
 
-              <div className = "list_selection col-12" data-aos="fade" data-aos-duration = "1000" data-aos-delay = "750">
-                <p>Problems</p>
-                <p>People</p>
-              </div>
+
             </div>
           </div>
     );
@@ -120,6 +106,10 @@ class HomeDisplay extends React.Component{
       <Fragment>
         {isAuthenticated ? displayRecentRooms : displayBanner }
         <RoomModal />
+        <div className = "list_selection col-12" data-aos="fade" data-aos-duration = "1000" data-aos-delay = "750">
+                <p>Problems</p>
+                <p>People</p>
+        </div>
         <Rooms query=""/>
       </Fragment>
     );

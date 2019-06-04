@@ -14,17 +14,6 @@ export const getProfilesAndUsers =  () => {
     users.forEach(id => dispatch(fetchUser(id)));
   }
 }
-
-export const fetchProfile =  (id) => {
-  return async (dispatch, getState) => {
-    const response = await axios
-    .get(`/api/profiles/${id}`)
-    .catch(err =>
-        dispatch(returnErrors(err.response.data, err.response.status))
-      );
-    dispatch({type: FETCH_PROFILE, payload: response.data});
-  }
-}
  
 export const getProfiles =  () => {
   return async (dispatch, getState) => {

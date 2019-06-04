@@ -1,19 +1,20 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 import UserHeader from '../common/UserHeader';
-import { getProfiles } from '../../actions/profiles';
+import { fetchProfile } from '../../actions/curr_profile';
 import {Link} from 'react-router-dom';
 
 class CurrUserProfile extends React.Component{
   componentDidMount(){
-    this.props.getProfiles();
+    this.props.fetchProfile(this.props.userId);
   }
   renderLinks(){
-    const {userProfile} = this.props;
-    if (userProfile===undefined) {
+    const {userProfiles} = this.props;
+    if (userProfiles===undefined) {
       return(<div></div>);
     }
-    if (userProfile.website!=undefined && userProfile.github!=undefined){
+    const userProfile = userProfiles[0]
+    if (userProfile.website!=undefined && userProfile.github!=undefined && userProfile.github!='' && userProfile.website!='' ){
       return(
         <Fragment>
         <div className="userProfile_links"><i className="fas fa-globe"></i> &nbsp; <a href={userProfile.website}>{userProfile.website.substring(8)}</a> </div>
@@ -23,7 +24,13 @@ class CurrUserProfile extends React.Component{
     }
   }
   render(){
-    const {userProfile} = this.props;
+    const {userProfiles} = this.props;
+    if (userProfiles == undefined){
+      return(<div>Loading</div>);
+    }
+    const userProfile = userProfiles[0]
+    console.log("Profile:")
+    console.log(userProfile)
     if (userProfile === undefined){
       return (
         <Fragment>
@@ -36,29 +43,36 @@ class CurrUserProfile extends React.Component{
         <Fragment>
           <div className="mt-5 mb-5 container">
             <div className="row">
-              <div className="col-4">
-                <img className="profile_profile_image" src = {userProfile.profile_image} />
-                  <div className="userProfile_username"><UserHeader userProperty="username" userId = {userProfile.user}/></div>
-                  <div className="userProfile_title">{userProfile.title}</div>
-                  <div className="userProfile_stats"><i className="fas pt-1 fa-star"></i> 5 &nbsp;  <i className="fas pt-1 fa-door-open"></i> 5</div>
-                  <div className="userProfile_line"></div>
-                  <div className="userProfile_bio">{userProfile.bio}</div>
-                  <div className="userProfile_line"></div>
+              <div className="profile_container">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-3">
+                      <img className="user_profile_image" src = {userProfile.profile_image} />
+                    </div>
+                    <div className="col-9">
+                      <div className="userProfile_username"><UserHeader userProperty="username"/></div>
+                      <div className="mb-1 userProfile_title">{userProfile.title}</div>
+                      <div className="mb-1 userProfile_bio">{userProfile.bio}</div>
+                      <div className="mt-2 userProfile_skills">{userProfile.skills}</div>
+                      {this.renderLinks()}
+                    </div>
+                  </div>
+                </div>
 
-                  {this.renderLinks()}
-                  <div className="userProfile_line"></div>
-                  <div className="userProfile_skills">{userProfile.skills}</div>
+              </div>
+                <div className="profile_options col-12">
                   <Link to = '/profile/edit'>
                     <button className = "profile_edit_buttons"><i className="fas fa-user-edit"></i> Edit Profile</button>
                   </Link>
                   <button className = "profile_edit_buttons"><i className="fas fa-file-image"></i> New Profile Image</button>
                   <button className = "profile_edit_buttons"><i className="fas fa-key"></i> Reset Password</button>
-              </div>
+                </div>
 
-              <div className="col-4">
+                <div className = "profile_boxes">
+
                 <Link to = "/my-rooms"><div className="profile_box">
                   <div className = "content">
-                    <i className="fas fa-lg  fa-folder-open"></i><span>Rooms</span>
+                    <span>Rooms</span>
                   </div>
                   </div>
                 </Link>
@@ -66,7 +80,7 @@ class CurrUserProfile extends React.Component{
                 <Link>
                   <div className="profile_box">
                     <div className = "content">
-                    <i className="fas fa-lg fa-user-friends"></i><span>Followers</span>
+                    <span>Followers</span>
                   </div>
                 </div>
                 </Link>
@@ -74,17 +88,7 @@ class CurrUserProfile extends React.Component{
                 <Link>
                   <div className="profile_box">
                     <div className = "content">
-                    <i className="fas fa-lg fa-coins"></i><span>Tokens</span>
-                  </div>
-                </div>
-                </Link>
-              </div>
-
-              <div className="col-4">
-                <Link>
-                  <div className="profile_box">
-                    <div className = "content">
-                    <i className="fas fa-lg fa-inbox"></i><span>Messages</span>
+                   <span>Tokens</span>
                   </div>
                 </div>
                 </Link>
@@ -92,7 +96,7 @@ class CurrUserProfile extends React.Component{
                 <Link>
                   <div className="profile_box">
                     <div className = "content">
-                    <i className="fas fa-lg fa-users"></i><span>Follows</span>
+                    <span>Messages</span>
                   </div>
                 </div>
                 </Link>
@@ -100,11 +104,19 @@ class CurrUserProfile extends React.Component{
                 <Link>
                   <div className="profile_box">
                     <div className = "content">
-                    <i className="fas fa-lg fa-user-cog"></i><span>Hiring Settings</span>
+                   <span>Follows</span>
                   </div>
                 </div>
                 </Link>
-              </div>
+
+                <Link>
+                  <div className="profile_box">
+                    <div className = "content">
+                   <span>Hiring Settings</span>
+                  </div>
+                </div>
+                </Link>
+                </div>
 
             </div>
           </div>
@@ -115,8 +127,8 @@ class CurrUserProfile extends React.Component{
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  user : state.auth.user.id,
-  userProfile : state.profiles
+  userProfiles : state.curr_profile,
+  userId: state.auth.user.id
 });
 
-export default connect(mapStateToProps,{getProfiles})(CurrUserProfile);
+export default connect(mapStateToProps,{fetchProfile})(CurrUserProfile);

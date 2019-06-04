@@ -45,8 +45,9 @@ class Rooms extends React.Component{
     if (this.props.userRooms){
       return (
         <Fragment>
-          <button onClick={this.props.deleteRoom.bind(this, room.id)} className="btn btn-danger mr-2">Delete</button>
-          <Link to ={`/edit-room/${room.id}`} className="btn btn-info mr-2">Edit</Link>
+          <button onClick={this.props.deleteRoom.bind(this, room.id)} className="mt-1 del-btn btn btn-danger mr-2">Delete</button>
+          <Link to ={`/edit-room/${room.id}`} className="mt-1 edit-btn btn btn-info mr-2">Edit</Link>
+          <Link to ={`/edit-room/${room.id}`} className="mt-1 view-btn btn btn-info mr-2">View</Link>
         </Fragment>
       );
     }

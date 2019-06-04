@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchProfile, editProfile} from '../../actions/profiles'
-import { Editor } from '@tinymce/tinymce-react';
+import {fetchProfile} from '../../actions/curr_profile'
+import {editProfile} from '../../actions/profiles'
 
 class ProfileForm extends React.Component{
   state = {
@@ -165,7 +165,7 @@ class ProfileForm extends React.Component{
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    profile: state.profiles[0]
+    profile: state.curr_profile
   };
 }
 

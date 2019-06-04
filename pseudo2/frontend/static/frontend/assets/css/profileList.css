@@ -66,5 +66,5 @@
   transition: all 0.25s ease;
 }
 .profile_actions .f:hover{
-  opacity: 0.5;
+  opacity: 0;
 }

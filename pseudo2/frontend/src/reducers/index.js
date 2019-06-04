@@ -8,6 +8,7 @@ import profiles from './profiles'
 import login_modal from './login_modal';
 import logout_modal from './logout_modal';
 import register_modal from './register_modal';
+import curr_profile from './curr_profile'
 
 export default combineReducers({
   rooms,
@@ -16,6 +17,7 @@ export default combineReducers({
   auth,
   modal,
   user,
+  curr_profile,
   profiles,
   register_modal,
   logout_modal,

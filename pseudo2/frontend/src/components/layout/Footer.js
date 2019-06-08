@@ -4,7 +4,7 @@ import { getRooms } from '../../actions/rooms';
 
 class Footer extends React.Component{
   componentDidMount(){
-    this.props.getRooms();
+    this.props.getRooms(); 
   }
   render(){
     return (
@@ -23,18 +23,18 @@ class Footer extends React.Component{
                   <i className="fab fa-github"></i>
                 </div>
               </div>
-              <div className="footer_right mt-4 col-6">
-                <div className="mb-2">
+              <div className="footer_right mt-3 col-6">
+                <div className="mb-1">
                   <div className="container">
                     <div className="row ">
                       <div className="m-0  p-0 col-7"></div>
                       <div className="m-0 p-0 col-2 door">
-                        <i className="fas mt-1 ml-1  fa-door-open"></i> &nbsp;
+                        <i class="fas fa-clone"></i> &nbsp;
                       </div>
                       <div className="footer_count pt-3 pr-3 col-3">
                         <span className="exact_count">{this.props.total_rooms}</span>
                         <br />
-                        <span className="mt-2">doors opened</span>
+                        <span className="mt-2">posts made</span>
                       </div>
                     </div>
                   </div>

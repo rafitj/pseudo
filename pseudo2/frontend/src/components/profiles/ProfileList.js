@@ -20,6 +20,8 @@ class ProfileList extends React.Component{
       return (
       this.props.profiles.map(profile => {
 
+        console.log(profile.user)
+
         if (numProfiles==1){numProfiles=0;}
         var duration = (1000 + (numProfiles++)*250);
 

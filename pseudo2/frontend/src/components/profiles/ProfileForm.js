@@ -10,20 +10,18 @@ class ProfileForm extends React.Component{
     github : '',
     website : '',
     hire : true,
+    profile_image: null,
     skills:''
   }
 
   componentDidMount() {
-    const {user, profile} = this.props
-     if (user != null){
-      fetchProfile(user.id)
-     }
-    const {bio, title, github, website, hire, skills} = this.props.profile;
+    const {bio, title, github, website, hire, profile_image, skills} = this.props.profile;
     this.setState({
       title,
       bio,
       github,
       website,
+      profile_image,
       hire,
       skills
     });
@@ -40,8 +38,10 @@ class ProfileForm extends React.Component{
       this.setState({hire:false});
     }
   }
+  handleProfileUpload = (e) =>{
+    this.setState({profile_image: e.target.files[0]});
+  }
   getHireClass = (value) => {
-    console.log (this.state.hire)
     if (this.state.hire){
       return 'btn btn-secondary ' + ((value=="Yes") ?'active':'');
     }
@@ -49,10 +49,16 @@ class ProfileForm extends React.Component{
   }
   onSubmit = e => {
     e.preventDefault();
-    const {bio, title, github, website, hire, skills} = this.state;
-    const updated_profile = {bio, title, github, website, hire, skills};
-    console.log(updated_profile)
-    this.props.editProfile(updated_profile, this.props.user.id);
+    const {bio, title, github, website, hire, profile_image, skills} = this.state;
+    var updated_profile = new FormData();
+    updated_profile.append("bio", bio);
+    updated_profile.append("title", title);
+    updated_profile.append("github", github);
+    updated_profile.append("website", website);
+    updated_profile.append("hire", hire);
+    updated_profile.append("profile_image", profile_image);
+    updated_profile.append("skills", skills);
+    this.props.editProfile(updated_profile, this.props.profile.id);
     const {profile} = this.props;
     this.setState({
       title : profile.title,
@@ -60,9 +66,11 @@ class ProfileForm extends React.Component{
       github : profile.github,
       website : profile.website,
       hire : profile.hire,
+      profile_image: profile.profile_image,
       skills : profile.skills
     });
   }
+
   render(){
     const {user, profile} = this.props
     const {bio, title, github, website, hire, skills} = this.state;
@@ -135,7 +143,15 @@ class ProfileForm extends React.Component{
 
           <div className = "create_room_header">Profile Image</div>
           <div>
-          <input type="file"></input>
+          <input
+              name='image'
+              accept=".jpg,.jpeg,.png"
+              id="flat-button-file"
+              multiple={false}
+              type="file"
+              onChange={this.handleProfileUpload}
+            />
+         
           </div>
 
           <br/>

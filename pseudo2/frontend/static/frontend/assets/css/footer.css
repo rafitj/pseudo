@@ -1,4 +1,3 @@
-
 .base_footer{
   margin-top: 2rem;
   background-color: #202122; 
@@ -15,19 +14,18 @@
   height: 0.35rem;
 }
 
-.my_row{
-  width: 120%;
-}
-
 .footer_left{
   text-align: left;
 }
 
+.footer_left h1{
+  font-size: 2rem;
+}
 .footer_right{
   text-align: right;
 }
 .footer_count{
-  text-align: left;
+  text-align: center;
 }
 .exact_count{
   font-size: 2rem;
@@ -35,22 +33,15 @@
   line-height: 0;
   margin:0;
 }
-.footer_social_media_icons .fab,.footer_social_media_icons .fa {
+.fa-clone {
   background: #444;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  font-size: 3rem;
+}
+
+.footer_social_media_icons .fab{
   margin-right: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.door{
-  text-align: right;
-}
-.base_footer .fa-door-open{
-  font-size: 3.5rem;
-  transition: all 0.3s ease;
-}
-
-.fa-door-open:hover{
-  opacity: 0.5;
 }

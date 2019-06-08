@@ -40,7 +40,7 @@
   text-align: center;
   color: #202122;
   margin: 1.5rem 0 0 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .list_selection p{
   display: inline-block;
@@ -49,8 +49,12 @@
   transition: all 0.25s ease;
 }
 .list_selection p:hover{
-  text-decoration: underline;
+  opacity: 0.8;
   cursor: pointer;
+}
+.list_active {
+  font-weight: 600;
+  text-decoration: underline;
 }
 .landing_button {
   border-radius: 40px;

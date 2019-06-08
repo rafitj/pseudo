@@ -5,7 +5,7 @@ import { fetchUser } from '../../actions/user';
 class UserHeader extends React.Component{
   componentDidMount(){
     if (this.props.userId != undefined){
-      this.props.fetchUser(this.props.userId.id)
+      this.props.fetchUser(this.props.userId)
     }
   }
   render(){
@@ -36,7 +36,6 @@ class UserHeader extends React.Component{
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.user,
-    userId : state.auth.user,
   };
 }
 

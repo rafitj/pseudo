@@ -24,13 +24,10 @@ class CurrUserProfile extends React.Component{
     }
   }
   render(){
-    const {userProfiles} = this.props;
-    if (userProfiles == undefined){
+    const {userProfile} = this.props;
+    if (userProfile == undefined){
       return(<div>Loading</div>);
     }
-    const userProfile = userProfiles[0]
-    console.log("Profile:")
-    console.log(userProfile)
     if (userProfile === undefined){
       return (
         <Fragment>
@@ -50,7 +47,7 @@ class CurrUserProfile extends React.Component{
                       <img className="user_profile_image" src = {userProfile.profile_image} />
                     </div>
                     <div className="col-9">
-                      <div className="userProfile_username"><UserHeader userProperty="username"/></div>
+                      <div className="userProfile_username"><UserHeader userId = {this.props.userId} userProperty="username"/></div>
                       <div className="mb-1 userProfile_title">{userProfile.title}</div>
                       <div className="mb-1 userProfile_bio">{userProfile.bio}</div>
                       <div className="mt-2 userProfile_skills">{userProfile.skills}</div>
@@ -127,7 +124,7 @@ class CurrUserProfile extends React.Component{
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  userProfiles : state.curr_profile,
+  userProfile : state.curr_profile,
   userId: state.auth.user.id
 });
 

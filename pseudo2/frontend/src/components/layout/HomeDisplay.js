@@ -3,24 +3,39 @@ import {connect} from 'react-redux';
 import { logout } from '../../actions/auth';
 import banner_img_1 from '../../../static/frontend/assets/banner_img_1.png'
 import banner_img_2 from '../../../static/frontend/assets/banner_img_2.png'
+import banner_img_3 from '../../../static/frontend/assets/banner_img_3.png'
+import banner_img_4 from '../../../static/frontend/assets/banner_img_4.png'
 import { getRoomsAndCreator } from '../../actions/rooms';
 import _ from 'lodash';
+import ProfileList from '../profiles/ProfileList';
 import Rooms from '../rooms/Rooms';
 import RoomModal from '../rooms/RoomModal';
 import Slider from "react-slick";
 import UserHeader from '../common/UserHeader';
+import { open_login  } from '../../actions/login_modal';
+import { open_register } from '../../actions/register_modal';
 class HomeDisplay extends React.Component{
-
+  state = {
+    show: "rooms"
+  }
   componentDidMount() {
     this.props.getRoomsAndCreator();
-    const x =  Math.floor(Math.random()*2 + 1)
+    const x =  Math.floor(Math.random()*4 + 1)
     if (x === 1){
       this.banner_header = "Sometimes building great things means getting help..."
       this.banner_img = banner_img_1
     }
-    else {
+    else if (x === 2) {
       this.banner_header = "Sometimes it takes more than a StackOverflow search..."
       this.banner_img = banner_img_2
+    }
+    else if (x === 3) {
+      this.banner_header = "Sometimes Udemy and YouTube don’t fit the task..."
+      this.banner_img = banner_img_3
+    }
+    else  {
+      this.banner_header = "Sometimes you want to learn, not have it done for you..."
+      this.banner_img = banner_img_4
     }
   }
 
@@ -59,10 +74,31 @@ class HomeDisplay extends React.Component{
     }
   }
 
+  renderContent(){
+    if (this.state.show == "rooms"){
+      return(
+      <Rooms query=""/>);
+    }
+    else{
+      return(
+        <ProfileList />);
+    }
+  }
 
+  showRooms = e => {
+    this.setState({show:"rooms"});
+  }
+  getRoomClass = e => {
+    return 'list_selection ' + ((this.state.show=="rooms") ?'list_active':'');
+  }
+  showProfiles = e => {
+    this.setState({show:"profiles"});
+  }
+  getProfileClass = e => {
+    return ' ' + ((this.state.show=="profiles") ?'list_active':'');
+  }
 
   render(){
-
     const {isAuthenticated, user} = this.props.auth
     const displayRecentRooms = (
       <div className="carousel_container">
@@ -91,8 +127,8 @@ class HomeDisplay extends React.Component{
                       platform. We bring together developers, 
                       designers and creators to form an intimate
                       community to help you build anything and everything. Join us today!</p>
-                <button className = "landing_button">Sign-Up</button>
-                <button className = "landing_button">Login</button>
+                <button onClick = {this.props.open_register} className = "landing_button">Sign-Up</button>
+                <button onClick = {this.props.open_login} className = "landing_button">Login</button>
                 <p className = "pseudo_intro pseudo_learn">
                   <small> <a className = "pseudo_learn" href = "#">Learn how it works.</a></small> </p>
                 </div>
@@ -107,10 +143,10 @@ class HomeDisplay extends React.Component{
         {isAuthenticated ? displayRecentRooms : displayBanner }
         <RoomModal />
         <div className = "list_selection col-12" data-aos="fade" data-aos-duration = "1000" data-aos-delay = "750">
-                <p>Problems</p>
-                <p>People</p>
+                <p className = {this.getRoomClass()} onClick = {this.showRooms}>Problems</p>
+                <p className = {this.getProfileClass()} onClick = {this.showProfiles}>People</p>
         </div>
-        <Rooms query=""/>
+        {this.renderContent()}
       </Fragment>
     );
   }
@@ -122,4 +158,4 @@ const mapStateToProps = state => ({
   isLoading: state.rooms.isLoading
 });
 
-export default connect(mapStateToProps, {logout, getRoomsAndCreator})(HomeDisplay);
+export default connect(mapStateToProps, {logout,open_login,open_register, getRoomsAndCreator})(HomeDisplay);

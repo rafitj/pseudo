@@ -1,9 +1,57 @@
+.form_container{
+  border: solid 1px #9fa6aa;
+  border-radius: 7px;
+  width: 80%;
+  height: 30rem;
+  text-align: center;
+  padding: 3rem 4rem;
+  margin: 0 auto;
+}
+.form_box{
+  display: table-cell;
+  height: 16rem;
+  vertical-align: middle;
+  text-align: center;
+}
+.carousel{
+  position: static;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon{
+  background-image:none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100%;
+  background-color: #9fa6aa;
+}
+.carousel-control-next, .carousel-control-prev {
+  position: static;
+  display: inline-block;
+  margin: 3rem;
+  margin-top: 0;
+}
+.carousel-indicators{
+  bottom: 7rem;
+}
+.carousel-indicators li{
+  background-color: #9fa6aa;
+  border-radius: 100%;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+form{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.instructions {
+  color: #9fa6aa;
+}
+
 .create_room_form h2 {
-  font-size: 3rem;
-  background: -webkit-linear-gradient(#f07854, #f5a658);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  color: #9fa6aa;
+  font-weight: 600;
   margin-bottom: 0;
 }
 
@@ -16,7 +64,7 @@
 }
 
 .create_room_form form .type_buttons .active .type_text , .create_room_form form .type_buttons .active i {
-  background: -webkit-linear-gradient(#f07854, #f5a658);
+  background: -webkit-linear-gradient(#4b4b4b, #424242);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -24,7 +72,7 @@
 
 .create_room_form form .type_buttons .btn {
   border: none;
-  background: #d6d6d6;
+  background: none;
   border-radius: 80px;
   font-weight: bold;
   opacity: 0.65;
@@ -43,23 +91,11 @@
 .type_buttons .btn-secondary:not(:disabled):not(.disabled).active {
   border: none;
   border-radius: 80px;
-  background-color: #202122;
-  box-shadow:  #d6d6d6;
+  background-color: none;
+  box-shadow:  none;
   transform: scale(1.1);
   opacity: 1;
 }
-
-.create_room_form .room_title {
-}
-
-.create_room_form .room_summary {
-
-}
-
-.create_room_form .room_content {
-
-}
-
 
 .center-container{
   text-align: center;
@@ -142,19 +178,17 @@
 
 
 .create_room_header{
-  text-align: left;
-  color: #d6d6d6;
+  color: #9fa6aa;
   font-size: 1.5rem;
 }
 
-/* .create_room_header hr {
-  color: #d6d6d6;
-  background: #d6d6d6;
-  border: #d6d6d6;
-  margin: 0 0 0.4rem 0.5rem;
-  padding: 0;
-  display: inline-block;
-} */
+.room_sub_header{
+  text-align: left;
+  color: #9fa6aa;
+  font-size: 1.1rem;
+}
+
+
 
 
 .create_room_submit{

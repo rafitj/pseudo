@@ -11,7 +11,7 @@ django-multiselectfield==0.1.8
 django-rest-knox==4.0.1
 django-storages==1.7.1
 django-versatileimagefield==1.10
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 idna==2.8
 oauthlib==3.0.1
 Pillow==5.4.1
